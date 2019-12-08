@@ -93,8 +93,8 @@ function App() {
     setSearchedRecipes(filteredRecipes)
 
   }
+  
   function handleActiveRecipeList (searchValue) {
-    const recipesToSearch = [...recipes]
       if (searchValue === '') { 
         setActiveRecipeListName("recipes")
       } 
