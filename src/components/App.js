@@ -3,7 +3,7 @@ import RecipeList from './RecipeList'
 import '../css/app.css'
 import uuidv4 from 'uuid/v4'
 import RecipeEdit from './RecipeEdit'
-
+import filterRecipeList from '../function-library/filterRecipeList'
 
 export const RecipeContext = React.createContext() //allow global access of variables and functions, 
 //must add Context Wrapper Provider with prop of the objects or functions to make global 
@@ -26,8 +26,9 @@ function App() {
     handleRecipeAdd, //same as handleRecipeAdd: handleRecipeAdd,
     handleRecipeDelete, //same as handleRecipeDelete: handleRecipeDelete
     handleRecipeSelect,
-    handleRecipeChange
-
+    handleRecipeChange,
+    handleRecipeSearch,
+    handleActiveRecipeList
   } //Ojbect with values representing variables and functions required as a prop for RecipeContext
 
   const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
@@ -47,9 +48,6 @@ function App() {
   
   //add a state that stores the active edit recipe 
   
-  
-
-
   function handleRecipeAdd() {
   const newRecipe = {
     id: uuidv4(),
@@ -85,16 +83,45 @@ function App() {
     setRecipes(newRecipe)
   }
 
+ //New Search Bar for Filtering Recipe List
+  const [activeRecipeListName, setActiveRecipeListName] = useState('recipes')
+  const [searchedRecipes, setSearchedRecipes] = useState([])
+  
+  function handleRecipeSearch (searchValue) {
+    handleActiveRecipeList(searchValue)
+    var filteredRecipes = filterRecipeList(searchValue, [...recipes] )
+    setSearchedRecipes(filteredRecipes)
 
+  }
+  function handleActiveRecipeList (searchValue) {
+    const recipesToSearch = [...recipes]
+      if (searchValue === '') { 
+        setActiveRecipeListName("recipes")
+      } 
+      else {
+        setActiveRecipeListName("searchedRecipes")
+        //setSearchedRecipes(filterRecipesList(searchValue, recipesToSearch))
+      }  
+      console.log("Active Recipe List Name (recipes or searchedRecipes: " + activeRecipeListName)
+    }
 
+  var whichRecipe 
+  if (activeRecipeListName === "recipes") { whichRecipe = recipes} 
+  else {whichRecipe = searchedRecipes}
+  
+  useEffect(() => { //do something everytime the App is re-rendered
+    return () => console.log('whichRecipe set: ' + activeRecipeListName)
+  }, [activeRecipeListName])
+// End New Search Bar for Filtering Recipe List
   return (
     <RecipeContext.Provider value={recipeContextValue}>
-      <RecipeList recipes={recipes}  /> 
+      <RecipeList recipes={whichRecipe}/> 
       {/* without context the props must be passed down as:
       handleRecipeAdd={handleRecipeAdd}
       handleRecipeDelete={handleRecipeDelete}
     */}
       {selectedRecipe && <RecipeEdit recipe={selectedRecipe}/>} {/* JSX if statement*/}
+      
   
     </RecipeContext.Provider>
   )

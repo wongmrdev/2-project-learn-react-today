@@ -1,0 +1,20 @@
+.recipe-search-bar-container {
+	vertical-align: center;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+}
+
+.recipe-search-bar__input {
+	width: 100%;
+	border: none;
+	border-bottom: 	1px solid black;
+	font-size: 20px;
+	font-weight: 600;
+	padding-left: 5px;
+}
+
+.recipe-search-bar__input::hover {
+	
+}

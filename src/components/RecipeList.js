@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
 import Recipe from './Recipe'
 import {RecipeContext} from './App'
+import RecipeSearchBar from './RecipeSearchBar'
+
+
 export default function RecipeList(props) {
-  const { handleRecipeAdd } = useContext(RecipeContext)
+  const { handleRecipeAdd, handleRecipeSearch } = useContext(RecipeContext)
   const {
     recipes //,
     // without context, props must be pushed down each component to the child components
@@ -12,9 +15,11 @@ export default function RecipeList(props) {
   } = props
   return (
     <div className="recipe-list">
+      <RecipeSearchBar handleRecipeSearch={handleRecipeSearch} />
       <div>
         {recipes.map(recipe => {
           return (
+           
             <Recipe
               key={recipe.id}
               //handleRecipeDelete={handleRecipeDelete} removed via Context
