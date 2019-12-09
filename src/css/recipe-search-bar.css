@@ -3,9 +3,13 @@
 	padding: 10px;
 	padding-left: 20px;
 	padding-right: 20px;
+	border-radius: 5px
 
 }
-
+.recipe-search-bar__input:hover {
+	border-bottom:3px solid hsl(200,100%, 50%)}
+.recipe-search-bar__input:focus {
+	border:3px solid hsl(200,100%, 50%)}
 .recipe-search-bar__input {
 	width: 100%;
 	border: none;
@@ -13,6 +17,7 @@
 	font-size: 20px;
 	font-weight: 600;
 	padding-left: 5px;
+
 }
 
 .recipe-search-bar__input::hover {
