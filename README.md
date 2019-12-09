@@ -1,3 +1,4 @@
+This project was an educational project by web-dev-simplified called [learn-react-today](https://github.com/WebDevSimplified/Learn-React-Today)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

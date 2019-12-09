@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import {RecipeContext} from './App'
+import { RecipeContext } from './App'  //RecipeContext is not default so it must be enclosed in {}
 export default function RecipeSearchBar({ handleRecipeSearch }) {
 	const { handleActiveRecipeList } = useContext(RecipeContext)
 	function onKeyUpEscKey (event) {
