@@ -1,10 +1,13 @@
-import React from 'react'
-
-export default function RecipeSearchBar({ handleRecipeSearch, handleActiveRecipeList }) {
+import React, { useContext } from 'react'
+import {RecipeContext} from './App'
+export default function RecipeSearchBar({ handleRecipeSearch }) {
+	const { handleActiveRecipeList } = useContext(RecipeContext)
 	function onKeyUpEscKey (event) {
 	    var code = event.charCode || event.keyCode;
 	    if (code === 27) {
 	        event.target.value = '';
+	        handleActiveRecipeList('');
+
 	    }
 	}
 
