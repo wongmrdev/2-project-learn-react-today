@@ -6,10 +6,15 @@
 	border-radius: 5px
 
 }
+
 .recipe-search-bar__input:hover {
-	border-bottom:3px solid hsl(200,100%, 50%)}
+	border-bottom:3px solid hsl(200,100%, 50%);
+}
+
 .recipe-search-bar__input:focus {
-	border:3px solid hsl(200,100%, 50%)}
+	border:3px solid hsl(126,66%, 50%, 1);
+}
+
 .recipe-search-bar__input {
 	width: 100%;
 	border: none;
@@ -17,9 +22,8 @@
 	font-size: 20px;
 	font-weight: 600;
 	padding-left: 5px;
-
 }
 
-.recipe-search-bar__input::hover {
-	
+.recipe-search-bar__input:hover {
+	background-color: hsl(126,66%, 50%, .1);
 }
