@@ -1,7 +1,7 @@
 import Fuse from 'fuse.js'
 
 export default function filterRecipeList(searchValue, recipesToSearch) {
-	var options = {
+	const options = {
 		  shouldSort: true,
 		  tokenize: true,
 		  threshold: 0.3,
@@ -18,8 +18,8 @@ export default function filterRecipeList(searchValue, recipesToSearch) {
 	};
 	console.log(recipesToSearch)
 	console.log("handleRecipeSearch options: " + options)
-	var fuse = new Fuse(recipesToSearch,options); // "list" is the item array
+	const fuse = new Fuse(recipesToSearch,options); // "list" is the item array
 	console.log("handleRecipeSearch searchValue: " + searchValue)
-	var result = fuse.search(searchValue);
+	const result = fuse.search(searchValue);
 	return result
 }

@@ -89,8 +89,8 @@ function App() {
   
   function handleRecipeSearch (searchValue) {
     handleActiveRecipeList(searchValue)
-    var filteredRecipes = filterRecipeList(searchValue, [...recipes] )
-    setSearchedRecipes(filteredRecipes)
+    const filteredRecipes = filterRecipeList(searchValue, [...recipes] )
+    setSearchedRecipes(filteredRecipes.map(i => i.item))
 
   }
   
