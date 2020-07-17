@@ -17,15 +17,15 @@
 
 .btn--primary:hover {
 	color: white;
-	background-color: hsl(200,100%, 35%);
+	background-color: hsl(90, 70%, 58%);
 }
 
 .btn--danger {
 	color: white;
-	background-color: hsl(0,100%, 50%);
+	background-color:hsl(0, 98%, 66%);
 }
 
 .btn--danger:hover {
 	color: white;
-	background-color: hsl(0,100%, 35%);
+	background-color: hsl(0, 98%, 35%);
 }

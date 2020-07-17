@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import RecipeList from './RecipeList'
 import '../css/app.css'
+import Routes from './Routes';
+import Header from './Header';
 import uuidv4 from 'uuid/v4'
-import RecipeEdit from './RecipeEdit'
 import filterRecipeList from '../function-library/filterRecipeList'
+
+
 
 export const RecipeContext = React.createContext() //allow global access of variables and functions, 
 //must add Context Wrapper Provider with prop of the objects or functions to make global 
@@ -14,21 +16,50 @@ export const RecipeContext = React.createContext() //allow global access of vari
 // Requires useContext Hook 
 
 function App() {
+
+  //fetch data
+  const [users, setUsers] = useState()
+  useEffect( () => {
+    
+      const fetchData = () => {
+        return fetch('/users')
+        .then( res => { console.log(res)
+          return res.json()
+        })
+        .then( receivedUsers => { 
+          console.log('users:', receivedUsers)
+          setUsers(receivedUsers)
+          })
+        .catch(err => {})
+      }
+
+      fetchData()
+    }, [])
+  
+  //start of recipes
   const [recipes, setRecipes] = useState(sampleRecipes) //first array item is the State variable,
   //second array item (setRecipes) is the setState function to modify state (modify the variable)
   //React will auto-render the changed state of the State variable when the setState function is 
   //to modify state
   const [selectedRecipeId, setSelectedRecipeId] = useState() //must bedefined before contextValue
-
   const selectedRecipe = recipes.find(recipe => recipe.id === selectedRecipeId)
-
+  const [activeRecipeListName, setActiveRecipeListName] = useState('recipes')
+  const [searchedRecipes, setSearchedRecipes] = useState([])
+  const [whichRecipe, setWhichRecipe] = useState(recipes)
   const recipeContextValue = {
+    recipes,
+    users,
+    selectedRecipeId,
+    activeRecipeListName,
+    searchedRecipes,
+    selectedRecipe,
     handleRecipeAdd, //same as handleRecipeAdd: handleRecipeAdd,
     handleRecipeDelete, //same as handleRecipeDelete: handleRecipeDelete
     handleRecipeSelect,
     handleRecipeChange,
     handleRecipeSearch,
-    handleActiveRecipeList
+    handleActiveRecipeList,
+    whichRecipe
   } //Ojbect with values representing variables and functions required as a prop for RecipeContext
 
   const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
@@ -84,13 +115,14 @@ function App() {
   }
 
  //New Search Bar for Filtering Recipe List
-  const [activeRecipeListName, setActiveRecipeListName] = useState('recipes')
-  const [searchedRecipes, setSearchedRecipes] = useState([])
+  
   
   function handleRecipeSearch (searchValue) {
     handleActiveRecipeList(searchValue)
     const filteredRecipes = filterRecipeList(searchValue, [...recipes] )
     setSearchedRecipes(filteredRecipes.map(i => i.item))
+    console.log("filtered recipes: ", filteredRecipes.map(i => i.item))
+    setActiveRecipeListName('searchedRecipes')
 
   }
   
@@ -100,31 +132,28 @@ function App() {
       } 
       else {
         setActiveRecipeListName("searchedRecipes")
-        //setSearchedRecipes(filterRecipesList(searchValue, recipesToSearch))
       }  
-      console.log("Active Recipe List Name (recipes or searchedRecipes: " + activeRecipeListName)
+      console.log("Active Recipe List Name (recipes or searchedRecipes): " + activeRecipeListName)
     }
 
-  var whichRecipe 
-  if (activeRecipeListName === "recipes") { whichRecipe = recipes} 
-  else {whichRecipe = searchedRecipes}
+  useEffect(()=> {
+    if (activeRecipeListName === "recipes") { setWhichRecipe(recipes)} 
+  else {setWhichRecipe(searchedRecipes)}
+}, [activeRecipeListName])
   
   useEffect(() => { //do something everytime the App is re-rendered
     return () => console.log('whichRecipe set: ' + activeRecipeListName)
   }, [activeRecipeListName])
+
 // End New Search Bar for Filtering Recipe List
   return (
+    
     <RecipeContext.Provider value={recipeContextValue}>
-      <RecipeList recipes={whichRecipe}/> 
-      {/* without context the props must be passed down as:
-      handleRecipeAdd={handleRecipeAdd}
-      handleRecipeDelete={handleRecipeDelete}
-    */}
-      {selectedRecipe && <RecipeEdit recipe={selectedRecipe}/>} {/* JSX if statement*/}
-      
-  
+    <Header />
+    <Routes />
     </RecipeContext.Provider>
-  )
+     
+    )
 }
 
 const sampleRecipes = [
@@ -167,5 +196,4 @@ const sampleRecipes = [
     ]
   }
 ]
-
 export default App;

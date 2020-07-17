@@ -16,10 +16,11 @@ export default function filterRecipeList(searchValue, recipesToSearch) {
 
   		  ]
 	};
-	console.log(recipesToSearch)
+	console.log(`recipes to search: ${recipesToSearch}`)
 	console.log("handleRecipeSearch options: " + options)
 	const fuse = new Fuse(recipesToSearch,options); // "list" is the item array
 	console.log("handleRecipeSearch searchValue: " + searchValue)
 	const result = fuse.search(searchValue);
+	console.log(`fuse search results: ${JSON.stringify(result)}`)
 	return result
 }

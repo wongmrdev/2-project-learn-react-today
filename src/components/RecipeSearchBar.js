@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import { RecipeContext } from './App'  //RecipeContext is not default so it must be enclosed in {}
-export default function RecipeSearchBar({ handleRecipeSearch }) {
-	const { handleActiveRecipeList } = useContext(RecipeContext)
+
+export default function RecipeSearchBar() {
+	const { handleActiveRecipeList, handleRecipeSearch } = useContext(RecipeContext)
 	function onKeyUpEscKey (event) {
 	    var code = event.charCode || event.keyCode;
 	    if (code === 27) {

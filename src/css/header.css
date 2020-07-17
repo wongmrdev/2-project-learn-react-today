@@ -1,0 +1,12 @@
+.app-header {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	min-height: 5vh;
+	max-height: 5vh;
+	background: #FD5353;
+	color: white;
+	width: 100%;
+	position: fixed;
+
+}

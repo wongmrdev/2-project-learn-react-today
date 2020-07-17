@@ -1,5 +1,6 @@
 {
   "name": "2-project-learn-react-today",
+  "description": "https://www.youtube.com/watch?v=mbsmsi7l3r4",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -10,16 +11,26 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "bcrypt": "^5.0.0",
+    "concurrently": "^5.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "fuse.js": "^6.3.1",
+    "jsonwebtoken": "^8.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.2.0"
   },
   "scripts": {
+    "devStart": "nodemon server.js",
+    "devStartAuth": "nodemon authServer.js",
+    "devStartLogin": "nodemon authServerLogin.js",
     "start": "set PORT=3007 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"npm run start\" \"npm run devStartAuth\" \"npm run devStartLogin\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "proxy": "http://localhost:5001"
 }

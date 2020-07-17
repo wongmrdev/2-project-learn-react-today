@@ -1,21 +1,19 @@
 import React, { useContext } from 'react'
 import Recipe from './Recipe'
-import {RecipeContext} from './App'
-import RecipeSearchBar from './RecipeSearchBar'
+import { RecipeContext } from './App'
 
 
 export default function RecipeList(props) {
-  const { handleRecipeAdd, handleRecipeSearch } = useContext(RecipeContext)
-  const {
-    recipes //,
-    // without context, props must be pushed down each component to the child components
-    // with Context, props can "jump over" components, reducing code and clutter
-    // handleRecipeAdd, can be removed because it's being handled by Context in Recipe.js 
-    // handleRecipeDelete can be removed because it's being handled by Context in Recipe.js
-  } = props
+  const { handleRecipeAdd, recipes } = useContext(RecipeContext)
+  // const {
+  //   recipes //,
+  //   // without context, props must be pushed down each component to the child components
+  //   // with Context, props can "jump over" components, reducing code and clutter
+  //   // handleRecipeAdd, can be removed because it's being handled by Context in Recipe.js 
+  //   // handleRecipeDelete can be removed because it's being handled by Context in Recipe.js
+  // } = props
   return (
     <div className="recipe-list">
-      <RecipeSearchBar handleRecipeSearch={handleRecipeSearch} />
       <div>
         {recipes.map(recipe => {
           return (

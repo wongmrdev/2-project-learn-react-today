@@ -6,7 +6,7 @@ import uuidv4 from 'uuid/v4'
 export default function RecipeEdit({recipe}) {
 	
 	console.log('RecipeEdit Rendered')
-	const { handleRecipeChange, handleRecipeSelect } = useContext(RecipeContext)
+	const { handleRecipeChange, handleRecipeSelect, recipes } = useContext(RecipeContext)
 
 	function handleChange(changes) {
 		handleRecipeChange(recipe.id, {...recipe, ...changes })

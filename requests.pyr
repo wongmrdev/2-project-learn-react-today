@@ -1,0 +1,28 @@
+get('http://localhost:3001/posts', 
+	headers={'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibnVubnlidW5ueSIsImlhdCI6MTU5NDU5MDU2OCwiZXhwIjoxNTk0NTkwNjI4fQ.rMvpvHQ0UT9G9RvsvuLGs4vOx6dQdlBLHdRzVE-c_9Q'})
+
+post('http://localhost:4001/login',
+json={ 'username': 'nunnybunny' }) 
+
+post('http://localhost:4001/token',
+json={ 'token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibnVubnlidW5ueSIsImlhdCI6MTU5NDU5MDg2M30.ss7zIGNYimWey10R2x3XIoWTKBFdMNAGsbZKccY_wFw"})
+
+delete('http://localhost:4001/logout',
+	json={'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibnVubnlidW5ueSIsImlhdCI6MTU5NDU5MDg2M30.ss7zIGNYimWey10R2x3XIoWTKBFdMNAGsbZKccY_wFw'})
+
+get('http://localhost:3001/posts', 
+	headers={'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWF0dCIsImlhdCI6MTU5NDU4ODAyOSwiZXhwIjoxNTk0NTg4MDU5fQ.GQYJKlI-qFXMcVHcpu55F2LU_a_2TZkjw7LN3iitKJw'})
+
+post('http://localhost:4001/login',
+json={ 'username': 'Matt' }) 
+
+
+get('http://localhost:5001/users')
+
+post('http://localhost:5001/users',
+	json={ 'name': "matty", 
+			'password': 'Password1' })
+
+post('http://localhost:5001/users/login',
+	json={ 'name': "matty", 
+			'password': 'Password1' })
