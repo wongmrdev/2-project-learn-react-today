@@ -6,7 +6,7 @@ import uuidv4 from 'uuid/v4'
 export default function RecipeEdit({recipe}) {
 	
 	console.log('RecipeEdit Rendered')
-	const { handleRecipeChange, handleRecipeSelect, recipes } = useContext(RecipeContext)
+	const { handleRecipeChange, handleRecipeSelect } = useContext(RecipeContext)
 
 	function handleChange(changes) {
 		handleRecipeChange(recipe.id, {...recipe, ...changes })
@@ -33,6 +33,8 @@ export default function RecipeEdit({recipe}) {
   	function handleIngredientDelete(id) {
   		handleChange({ingredients: recipe.ingredients.filter(i => i.id !== id)})
   	}
+
+  	
 
 
 
@@ -116,7 +118,8 @@ export default function RecipeEdit({recipe}) {
 			    		key={ingredient.id} 
 			    		ingredient={ingredient}
 			    		handleIngredientChange={handleIngredientChange}
-			    		handleIngredientDelete={handleIngredientDelete}/>
+			    		handleIngredientDelete={handleIngredientDelete}
+			    		handleIngredientAdd={handleIngredientAdd}/>
 			    	))}
 			    				    </div>
 			    <div className="recipe-edit__add-ingredient-button-container">

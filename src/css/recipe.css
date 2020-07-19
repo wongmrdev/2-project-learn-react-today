@@ -1,6 +1,6 @@
 .recipe {
 	padding: 20px;
-	padding-bottom: 40px;
+	padding-bottom: 2vh;
 	border-bottom: 1px solid black;
 
 
@@ -15,7 +15,7 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 30px;
-	margin-top: 5vh;
+	
 
 
 }

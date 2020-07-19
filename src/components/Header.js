@@ -1,17 +1,17 @@
-import React, { useContext, useEffect }  from 'react'
+import React, { }  from 'react'
 import RecipeSearchBar from './RecipeSearchBar'
-import { RecipeContext } from './App'
+import { } from './App'
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { library } from '@fortawesome/fontawesome-svg-core';
 
 export default function Header() {
-	const { handleRecipeSearch, 
-			activeRecipeListName,
-			searchedRecipes,
-			recipes  } = useContext(RecipeContext)
-			
+	
 	return (
 		<div className="app-header">
-			<span>Recipe</span>
-		    <RecipeSearchBar/>			
+			<header>Recipe</header>
+		    <RecipeSearchBar/>
+		    <FontAwesomeIcon icon={faSignInAlt}/> 		
 		</div>
 	)
 }

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import React, { } from 'react';
+import { Link } from 'react-router-dom';
 import '../../css/app.css'
-import uuidv4 from 'uuid/v4'
+import {} from 'uuid/v4'
 
 function Registration() {
 

@@ -3,8 +3,9 @@ import Recipe from './Recipe'
 import { RecipeContext } from './App'
 
 
-export default function RecipeList(props) {
-  const { handleRecipeAdd, recipes } = useContext(RecipeContext)
+export default function RecipeList({recipes}) {
+  const { handleRecipeAdd } = useContext(RecipeContext)
+
   // const {
   //   recipes //,
   //   // without context, props must be pushed down each component to the child components

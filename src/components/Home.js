@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import RecipeList from './RecipeList'
 import '../css/app.css'
 import RecipeEdit from './RecipeEdit'
@@ -6,12 +6,15 @@ import { RecipeContext } from './App'
 
 
 function Home() {
-  const { recipes,
-          activeRecipeListName,
-          searchedRecipes,
-          selectedRecipe,
-          whichRecipe } = useContext(RecipeContext)
-
+  const { selectedRecipe, 
+    activeRecipeListName, 
+    recipes, 
+    searchedRecipes } = useContext(RecipeContext)
+  
+  var whichRecipe 
+  if (activeRecipeListName === "recipes") { whichRecipe = recipes} 
+  else {whichRecipe = searchedRecipes}
+  
   return (
     <>
       <RecipeList recipes={whichRecipe}/> 
@@ -20,7 +23,7 @@ function Home() {
       handleRecipeDelete={handleRecipeDelete}
     */}
       {selectedRecipe && <RecipeEdit recipe={selectedRecipe}/>} {/* JSX if statement*/}
-    </>
+    </>   
       )
 }
 
