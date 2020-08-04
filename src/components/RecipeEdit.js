@@ -2,11 +2,14 @@ import React, { useContext } from 'react';
 import { RecipeContext } from './App'
 import RecipeIngredientEdit from './RecipeIngredientEdit'  //used to allow a child component to be used in this component JSX
 import uuidv4 from 'uuid/v4'
+// import postData from '../function-library/postData'
 
 export default function RecipeEdit({recipe}) {
 	
 	console.log('RecipeEdit Rendered')
-	const { handleRecipeChange, handleRecipeSelect } = useContext(RecipeContext)
+	const { handleRecipeChange,
+		 handleRecipeSelect,
+		selectedRecipe } = useContext(RecipeContext)
 
 	function handleChange(changes) {
 		handleRecipeChange(recipe.id, {...recipe, ...changes })
@@ -32,13 +35,25 @@ export default function RecipeEdit({recipe}) {
 
   	function handleIngredientDelete(id) {
   		handleChange({ingredients: recipe.ingredients.filter(i => i.id !== id)})
-  	}
+	  }
+	
+	function handleRecipeSubmit() {
 
-  	
-
-
-
-
+		fetch('http://localhost:5002/recipe-upsert', {
+		method: 'POST', // or 'PUT'
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(selectedRecipe),
+		})
+		.then(response => response.json())
+		.then(data => {
+		console.log('Success:', data);
+		})
+		.catch((error) => {
+		console.error('Error:', error);
+		});
+	}
 
 	return (	
 		<div>
@@ -46,8 +61,14 @@ export default function RecipeEdit({recipe}) {
 			    <div className="recipe-edit__remove-button-container">
 			    <button 
 			    className="btn recipe-edit__remove-button"
-			    onClick={() => handleRecipeSelect(undefined)}>
+			    onClick={() => handleRecipeSelect(undefined)}
+					>
 			    &times;</button>
+				<button 
+			    className="btn recipe-edit__remove-button"
+			    onClick={() => handleRecipeSubmit()}
+					>submit postrequest </button>
+				
 			    </div>
 			    <div className="recipe-edit__details-grid">
 			    	<label 

@@ -26,3 +26,7 @@ post('http://localhost:5001/users',
 post('http://localhost:5001/users/login',
 	json={ 'name': "matty", 
 			'password': 'Password1' })
+
+post('http://localhost:5002/recipes',
+	json={ 'name': "matty", 
+			'password': 'Password1' })			

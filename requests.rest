@@ -1,5 +1,74 @@
+###
 GET http://localhost:3001/posts
-
+###
 POST http://localhost:3001/login
 BODY
-{ username: matt }
+{ "username": "matt" }
+###
+GET http://localhost:5002/recipes HTTP/1.1
+content-type: application/json  
+
+###
+POST http://localhost:5002/recipes HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+
+###
+
+POST http://localhost:5002/recipe-upsert HTTP/1.1
+content-type: application/json
+
+ {
+    "id": 12,
+    "servings": "15",
+    "cookTime": "1:45",
+    "instructions": "1. Put salt on chicken\n2. Put chicken in oven\n3. Eat chicken",
+    "ingredients": [
+      {
+        "id": 1,
+        "name": "Chicken",
+        "amount": "2 Pounds"
+      },
+      {
+        "id": 2,
+        "name": "Salt",
+        "amount": "1 Tbs"
+      }
+    ]
+  }
+###
+
+POST http://localhost:5002/recipe-add HTTP/1.1
+content-type: application/json
+
+ {
+    "id": "14",
+    "servings": "4",
+    "cookTime": "1:45",
+    "name": "Gerneral Nunny's Chicken",
+    "instructions": "1. Put salt on chicken\n2. Put chicken in oven\n3. Eat chicken",
+    "ingredients": [
+      {
+        "id": 1,
+        "name": "Chicken",
+        "amount": "2 Pounds"
+      },
+      {
+        "id": 2,
+        "name": "Salt",
+        "amount": "1 Tbs"
+      }
+    ]
+  }
+###
+DELETE http://localhost:5002/recipe-delete HTTP/1.1
+content-type: application/json
+
+ {
+    "id": "12"
+  }
+###

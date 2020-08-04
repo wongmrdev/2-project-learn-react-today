@@ -6,14 +6,10 @@ import { RecipeContext } from './App'
 
 
 function Home() {
-  const { selectedRecipe, 
-    activeRecipeListName, 
-    recipes, 
-    searchedRecipes } = useContext(RecipeContext)
+  const { selectedRecipe,
+    whichRecipe } = useContext(RecipeContext)
   
-  var whichRecipe 
-  if (activeRecipeListName === "recipes") { whichRecipe = recipes} 
-  else {whichRecipe = searchedRecipes}
+  
   
   return (
     <>

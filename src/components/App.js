@@ -4,6 +4,7 @@ import Routes from './Routes';
 import Header from './Header';
 import uuidv4 from 'uuid/v4'
 import filterRecipeList from '../function-library/filterRecipeList'
+//import Recipes from '../function-library/recipeQuery'
 
 
 export const RecipeContext = React.createContext() //allow global access of variables and functions, 
@@ -16,27 +17,28 @@ export const RecipeContext = React.createContext() //allow global access of vari
 
 function App() {
 
-  //fetch data
-  const [users, setUsers] = useState()
+  //start of recipes
+  const [recipes, setRecipes] = useState(sampleRecipes)
   useEffect( () => {
     
-      const fetchData = () => {
-        return fetch('/users')
-        .then( res => { console.log(res)
-          return res.json()
+    const fetchDataRecipes = () => {
+      return fetch('/recipes')
+      .then( res => { console.log('res: ', res)
+        return res.json()
+      })
+      .then( receivedRecipes => { 
+        console.log('Received Recipes:', receivedRecipes)
+        setRecipes(receivedRecipes)
         })
-        .then( receivedUsers => { 
-          console.log('users:', receivedUsers)
-          setUsers(receivedUsers)
-          })
-        .catch(err => {})
-      }
+      .catch(err => {})
+    }
 
-      fetchData()
-    }, [])
-
-  //start of recipes
-  const [recipes, setRecipes] = useState(sampleRecipes) //first array item is the State variable,
+    fetchDataRecipes()
+  }, [])
+  
+  
+  
+  //first array item is the State variable,
   //second array item (setRecipes) is the setState function to modify state (modify the variable)
   //React will auto-render the changed state of the State variable when the setState function is 
   //to modify state
@@ -45,12 +47,16 @@ function App() {
   const [activeRecipeListName, setActiveRecipeListName] = useState('recipes')
   const [searchedRecipes, setSearchedRecipes] = useState([])
   
+  var whichRecipe 
+  if (activeRecipeListName === "recipes") { whichRecipe = recipes} 
+  else {whichRecipe = searchedRecipes}
+    
   const recipeContextValue = {
     recipes,
-    users,
     activeRecipeListName,
     searchedRecipes,
     selectedRecipe,
+    whichRecipe,
     handleRecipeAdd, //same as handleRecipeAdd: handleRecipeAdd,
     handleRecipeDelete, //same as handleRecipeDelete: handleRecipeDelete
     handleRecipeSelect,
@@ -92,15 +98,34 @@ function App() {
   }
 
   function handleRecipeDelete(id) {
+    //delete from backend		
+    fetch('http://localhost:5002/recipe-delete', {
+      method: 'DELETE',
+      //mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({id: id.toString()})
+      })
+      .then(response => response.json())
+      .then(data => {
+      console.log(`Success, reciped id ${id} deleted`);
+      })
+      .catch((error) => {
+      console.error('Error:', error);
+      });
+      //set selectedRecipeId to undefined
     if (selectedRecipeId != null && selectedRecipeId === id) {
       setSelectedRecipeId(undefined)
     }
+      //delete from frontend
       setRecipes(recipes.filter(recipe => recipe.id !== id))
-  }
+	}
+  
 
   //function to handle storing edited recipe
   function handleRecipeSelect(id) {
-    setSelectedRecipeId(id)
+      setSelectedRecipeId(id)
   }
 
   //allow us to change a recipe
@@ -129,52 +154,54 @@ function App() {
       }
     }
 
+
   return (
     
     <RecipeContext.Provider value={recipeContextValue}>
     <Header />
     <Routes />
     </RecipeContext.Provider>
+    
      
     )
 }
 
 const sampleRecipes = [
   {
-    id: 1,
-    name: 'Plain Chicken',
-    servings: 3,
-    cookTime: '1:45',
-    instructions: "1. Put salt on chicken\n2. Put chicken in oven\n3. Eat chicken",
-    ingredients: [
+    "id": 1,
+    "name": "Plain Chicken",
+    "servings": 3,
+    "cookTime": "1:45",
+    "instructions": "1. Put salt on chicken\n2. Put chicken in oven\n3. Eat chicken",
+    "ingredients": [
       {
-        id: 1,
-        name: 'Chicken',
-        amount: '2 Pounds'
+        "id": 1,
+        "name": "Chicken",
+        "amount": "2 Pounds"
       },
       {
-        id: 2,
-        name: 'Salt',
-        amount: '1 Tbs'
+        "id": 2,
+        "name": "Salt",
+        "amount": "1 Tbs"
       }
     ]
   },
   {
-    id: 2,
-    name: 'Plain Pork',
-    servings: 5,
-    cookTime: '0:45',
-    instructions: "1. Put paprika on pork\n2. Put pork in oven\n3. Eat pork",
-    ingredients: [
+    "id": 2,
+    "name": "Plain Pork",
+    "servings": 5,
+    "cookTime": "0:45",
+    "instructions": "1. Put paprika on pork\n2. Put pork in oven\n3. Eat pork",
+    "ingredients": [
       {
-        id: 1,
-        name: 'Pork',
-        amount: '3 Pounds'
+        "id": 1,
+        "name": "Pork",
+        "amount": "3 Pounds"
       },
       {
-        id: 2,
-        name: 'Paprika',
-        amount: '2 Tbs'
+        "id": 2,
+        "name": "Paprika",
+        "amount": "2 Tbs"
       }
     ]
   },
@@ -200,4 +227,5 @@ const sampleRecipes = [
     servings: 8
   }
 ]
+
 export default App;

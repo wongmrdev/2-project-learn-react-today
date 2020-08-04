@@ -19,15 +19,22 @@ export default function Recipe(props) {
           <h3 className="recipe__title">{name}</h3>
           <div>
             <button 
-            className="btn btn--primary mr-1"
+            className="btn btn--primary mr-1 pulse-button-hover"
             onClick={()=> handleRecipeSelect(id)}>
-            Edit
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+              Edit
             </button>
             <button 
-              className="btn btn--danger"
-              onClick={()=>handleRecipeDelete(id)}
-            >
-            Delete
+              className="btn btn--danger pulse-button-hover"
+              onClick={()=>handleRecipeDelete(id)}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Delete
             </button>
           </div>
         </div>

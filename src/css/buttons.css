@@ -4,28 +4,223 @@
 	border: none;
 	outline: none;
 	font-weight: bold;
-	border-radius: 5px;
+	border-radius: 100px;
 	padding: 5px 20px;
 	cursor: pointer;
+	z-index: 0;
 
 }	
 
 .btn--primary {
 	color: white;
 	background-color: hsl(200,100%, 50%);
+	position: relative;
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	transition: 0.2s;
+	overflow: hidden;
+	width: 100%;
+	margin: 2px;
+	
+
 }
 
 .btn--primary:hover {
-	color: white;
-	background-color: hsl(90, 70%, 58%);
+	background-color: hsl(200,100%, 50%);
 }
+
+
+
+/* Initiate color change for pulse-on-hover */
+button.pulse-button-hover {
+}
+
+button.btn--primary:hover,
+button.btn--primary :focus {
+	animation: borderPulse--primary-btn 1000ms infinite ease-out, hoverShine 200ms linear 0s 2 alternate;
+		
+}
+button.btn--danger:hover,
+button.btn--danger:focus {
+	animation: borderPulse--danger-btn 1000ms infinite ease-out, hoverShine 200ms linear 0s 2 alternate;
+	}
+
+
+/* Declare border pulse animation */
+@keyframes borderPulse--primary-btn {
+  0% {
+    box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,1), 0px 0px 0px 0px hsl(200,100%, 50%);
+  }
+  100% {
+    box-shadow: inset 0px 0px 0px .5px rgba(117, 117, 255,.2), 0px 0px 0px 1px hsl(200,100%, 50%);
+  }
+}
+/* Declare border pulse animation */
+@keyframes borderPulse--danger-btn {
+  0% {
+    box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,1), 0px 0px 0px 0px hsla(0, 98%, 66%, .2);
+  }
+  100% {
+    box-shadow: inset 0px 0px 0px 1px rgba(117, 117, 255,.2), 0px 0px 0px 1px hsla(0, 98%, 66%, 1);
+  }
+}
+/* Declare shine on hover animation */
+@keyframes hoverShine {
+	0%{
+		background-image: linear-gradient(135deg, rgba(255,255,255,.4) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%);
+	}
+	50%{
+		background-image: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.4) 50%, rgba(255,255,255,0) 100%);
+	}
+	100%{
+		background-image: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,.4) 100%);
+	}
+}
+
 
 .btn--danger {
 	color: white;
 	background-color:hsl(0, 98%, 66%);
+	position: relative;
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	transition: 0.2s;
+	overflow: hidden;
 }
 
 .btn--danger:hover {
 	color: white;
 	background-color: hsl(0, 98%, 35%);
+}
+
+.btn--primary span {
+	position: absolute;
+	display: block;
+}
+
+.btn--primary span:nth-child(1) {
+	top:0;
+	left: -100%;
+	width: 100%;
+	height: 2px; 
+	background: linear-gradient(90deg, transparent, hsl(200,100%, 50%) );
+}
+
+.btn--primary:hover span:nth-child(1) {
+	
+	left: 100%;
+	transition: 1s;
+}
+
+.btn--primary span:nth-child(3) {
+	bottom:0;
+	right: -100%;
+	width: 100%;
+	height: 2px;
+	background: linear-gradient(270deg, transparent, hsl(200,100%, 50%) );
+}
+
+.btn--primary:hover span:nth-child(3) {
+	
+	right: 100%;
+	transition: 1s;
+	transition-delay: 0.5s;
+}
+
+
+.btn--primary span:nth-child(2) {
+	top:-100%;
+	right: 0;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(180deg, transparent, hsl(200,100%, 50%) );
+}
+
+.btn--primary:hover span:nth-child(2) {
+	
+	top: 100%;
+	transition: 1s;
+	transition-delay: 0.25s;
+}
+
+.btn--primary span:nth-child(4) {
+	bottom: -100%;
+	left: 0;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(360deg, transparent, hsl(200,100%, 50%) );
+}
+
+.btn--primary:hover span:nth-child(4) {
+	
+	bottom: 100%;
+	transition: 1s;
+	transition-delay: 0.75s;
+}
+
+.btn--danger span {
+	position: absolute;
+	display: block;
+}
+
+.btn--danger span:nth-child(1) {
+	top:0;
+	left: -100%;
+	width: 100%;
+	height: 2px; 
+	background: linear-gradient(90deg, transparent, hsl(0, 98%, 38%) );
+}
+
+.btn--danger:hover span:nth-child(1) {
+	
+	left: 100%;
+	transition: 1s;
+}
+
+.btn--danger span:nth-child(3) {
+	bottom:0;
+	right: -100%;
+	width: 100%;
+	height: 2px;
+	background: linear-gradient(270deg, transparent, hsl(0, 98%, 38%) );
+}
+
+.btn--danger:hover span:nth-child(3) {
+	
+	right: 100%;
+	transition: 1s;
+	transition-delay: 0.5s;
+}
+
+
+.btn--danger span:nth-child(2) {
+	top:-100%;
+	right: 0;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(180deg, transparent, hsl(0, 98%, 38%) );
+}
+
+.btn--danger:hover span:nth-child(2) {
+	
+	top: 100%;
+	transition: 1s;
+	transition-delay: 0.25s;
+}
+
+.btn--danger span:nth-child(4) {
+	bottom: -100%;
+	left: 0;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(360deg, transparent, hsl(0, 98%, 38%) );
+}
+
+.btn--danger:hover span:nth-child(4) {
+	
+	bottom: 100%;
+	transition: 1s;
+	transition-delay: 0.75s;
 }

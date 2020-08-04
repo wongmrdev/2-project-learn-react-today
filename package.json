@@ -21,8 +21,10 @@
     "express": "^4.17.1",
     "fuse.js": "^6.3.1",
     "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.25",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-query": "^2.5.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.2.0"
   },
@@ -30,11 +32,12 @@
     "devStart": "nodemon server.js",
     "devStartAuth": "nodemon authServer.js",
     "devStartLogin": "nodemon authServerLogin.js",
+    "devStartRecipeServer": "nodemon ./services/recipesServer",
     "start": "set PORT=3007 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"npm run start\" \"npm run devStartAuth\" \"npm run devStartLogin\""
+    "dev": "concurrently \"npm run devStartRecipeServer\" \"npm run start\" \"npm run devStartAuth\" \"npm run devStartLogin\""
   },
   "eslintConfig": {
     "extends": "react-app"
