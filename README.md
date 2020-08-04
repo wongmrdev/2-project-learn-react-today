@@ -5,6 +5,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm run dev`
+running command in package.json:
+>"dev": "concurrently \"npm run devStartRecipeServer\" \"npm run start\" \"npm run devStartAuth\" \"npm run devStartLogin\""
+  }
+Runs the app in the development mode.<br />
+Open [http://localhost:3007](http://localhost:3007) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 ### `npm start`
 
 Runs the app in the development mode.<br />

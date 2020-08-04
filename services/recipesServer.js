@@ -88,7 +88,6 @@ async function handleRecipesGet() {
 }
 
 async function handlePostRecipeAdd(res, newRecipe) {
-    console.log(await RecipesModel.exists({id: newRecipe.id}))
     if(newRecipe&&  ! await RecipesModel.exists({id: newRecipe.id}))  {
 		try {
             let recipeAdd =  new RecipesModel(newRecipe)
