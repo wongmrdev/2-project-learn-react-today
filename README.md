@@ -7,7 +7,9 @@ In the project directory, you can run:
 
 ### `npm run dev`
 running command in package.json:
+
     "dev": "concurrently \"npm run devStartRecipeServer\" \"npm run start\" \"npm run devStartAuth\" \"npm run devStartLogin\"" 
+    
 Runs the app in the development mode.<br />
 Open [http://localhost:3007](http://localhost:3007) to view it in the browser.
 
