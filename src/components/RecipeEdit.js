@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { RecipeContext } from './App'
 import RecipeIngredientEdit from './RecipeIngredientEdit'  //used to allow a child component to be used in this component JSX
 import uuidv4 from 'uuid/v4'
-import { faBackward } from "@fortawesome/free-solid-svg-icons";
+import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import postData from '../function-library/postData'
 
@@ -60,24 +60,25 @@ export default function RecipeEdit({recipe}) {
 	return (	
 		<div>
 			<div className="recipe-edit" >
-				<div className="recipe-edit__header-buttons-container">
-					<div className="recipe-edit__remove-button-container">
-						<FontAwesomeIcon icon= { faBackward } 
-						className="btn recipe-edit__remove-button"
-						onClick={() => handleRecipeSelect(undefined)}
-						>
-						</FontAwesomeIcon>				
+				<div className="recipe-edit__container">
+					<div className="recipe-edit__header-buttons-container">
+						<div className="recipe-edit__remove-button-container">
+							<FontAwesomeIcon icon= { faStepBackward } 
+							className="btn recipe-edit__remove-button"
+							onClick={() => handleRecipeSelect(undefined)}
+							>
+							</FontAwesomeIcon>				
+						</div>
+						<div></div>
+						<div className="recipe-edit__post-recipe-to-database-button-container">
+							<button 
+							className="btn recipe-edit__save-button"
+							onClick={() => handleRecipeSubmit()}>
+							Save
+							</button>
+						</div>
 					</div>
-					<div></div>
-					<div className="recipe-edit__post-recipe-to-database-button-container">
-						<button 
-						className="btn recipe-edit__save-button"
-						onClick={() => handleRecipeSubmit()}>
-						Save
-						</button>
-					</div>
-				</div>
-					
+				</div>	
 			    <div className="recipe-edit__details-grid">
 			    	<label 
 				    	htmlFor="name" 
@@ -158,14 +159,6 @@ export default function RecipeEdit({recipe}) {
 			    	Add Ingredient
 			    	</button>
 			    </div>
-				<div className="recipe-edit__post-recipe-to-database-button-container">
-					<button 
-					className="btn recipe-edit__save-button"
-					onClick={() => handleRecipeSubmit()}>
-					Save
-					</button>
-				</div>
-
 			</div>
 		</div>
 	)

@@ -20,6 +20,14 @@
 
 }
 
+.recipe-edit__save-button:hover {
+	position: relative;
+	min-width: 30px;
+	justify-content: center;
+	color: white;
+	background-color: hsl(100, 100%, 30%);
+
+}
 .btn--primary {
 	color: white;
 	background-color: hsl(200,100%, 50%);

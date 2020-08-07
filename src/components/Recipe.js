@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import IngredientList from './IngredientList';
 import { RecipeContext } from './App'
 
@@ -13,10 +13,16 @@ export default function Recipe(props) {
     ingredients,
     // already delcared by Context handleRecipeDelete
   } = props
+
+  const [isActive, toggleActiveClass] = useState(false)
+  const activeClass = isActive ? 'active' : ''
+  function handleToggleActiveClass(){
+    isActive ? toggleActiveClass(false) : toggleActiveClass(true)
+  }
   return (
       <div className="recipe">
-        <div className="recipe__header">
-          <h3 className="recipe__title">{name}</h3>
+        <div className={"recipe__header collapsible " + activeClass} onClick={()=>handleToggleActiveClass()}>
+          <h3 className="recipe__title ">{name}</h3>
           <div>
             <button 
             className="btn btn--primary mr-1 pulse-button-hover"
@@ -38,22 +44,24 @@ export default function Recipe(props) {
             </button>
           </div>
         </div>
-        <div className="recipe__row">
-          <span className="recipe__label">Cook Time:</span>
-          <span className="recipe__value">{cookTime}</span>
-        </div>
-        <div className="recipe__row">
-          <span className="recipe__label">Servings:</span>
-          <span className="recipe__value">{servings}</span>
-        </div>
-        <div className="recipe__row">
-          <span className="recipe__label">Instructions:</span>
-          <div className="recipe__value recipe__value--indented recipe__instructions ">{instructions}</div>
-        </div>
-        <div className="recipe__row">
-          <span className="recipe__label">Ingredients:</span>
-          <div className="recipe__value recipe__value--indented">
-            <IngredientList ingredients={ingredients} />
+        <div className={"content " + activeClass} onClick={()=>handleToggleActiveClass()}>
+          <div className="recipe__row">
+            <span className="recipe__label">Cook Time:</span>
+            <span className="recipe__value">{cookTime}</span>
+          </div>
+          <div className="recipe__row">
+            <span className="recipe__label">Servings:</span>
+            <span className="recipe__value">{servings}</span>
+          </div>
+          <div className="recipe__row">
+            <span className="recipe__label">Instructions:</span>
+            <div className="recipe__value recipe__value--indented recipe__instructions ">{instructions}</div>
+          </div>
+          <div className="recipe__row">
+            <span className="recipe__label">Ingredients:</span>
+            <div className="recipe__value recipe__value--indented">
+              <IngredientList ingredients={ingredients} />
+            </div>
           </div>
         </div>
       </div>

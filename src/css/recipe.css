@@ -1,6 +1,4 @@
 .recipe {
-	padding: 20px;
-	padding-bottom: 2vh;
 	border-bottom: 1px solid black;
 
 
@@ -8,26 +6,24 @@
 
 .recipe:last-child {
 	border-bottom: none;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 }
 .recipe__header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 30px;
-	
-
+	margin-bottom: 0px;
 
 }
 
 .recipe__title {
 	margin: 0;
-	font-size: 1.25rem;
-	font-weight: bold;
+	font-size: 1rem;
+	font-weight: 700;
 }
 
 .recipe__row {
-	margin: 10px;
+	margin: 5px;
 
 }
 
@@ -47,3 +43,36 @@
 .recipe__instructions {
 	white-space: pre-wrap;
 }
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+	background-color: #ffffff;
+	color: #444444;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 15px;
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+background-color: #ccc;
+color: #000000
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+padding: 0 18px;
+display: none;
+overflow: hidden;
+background-color: #f1f1f1;
+}
+
+.content.active{
+	padding: 0 18px;
+	display: block;
+	overflow: hidden;
+	background-color: #f1f1f1;
+	}
