@@ -6,10 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm run dev`
-running command in package.json:
+running 'concurrently' command in package.json starts 4 scripts:
 
     "dev": "concurrently \"npm run devStartRecipeServer\" \"npm run start\" \"npm run devStartAuth\" \"npm run devStartLogin\"" 
-    
+
 Runs the app in the development mode.<br />
 Open [http://localhost:3007](http://localhost:3007) to view it in the browser.
 

@@ -4,12 +4,21 @@
 	border: none;
 	outline: none;
 	font-weight: bold;
-	border-radius: 100px;
+	border-radius: 25px;
 	padding: 5px 20px;
 	cursor: pointer;
 	z-index: 0;
 
 }	
+
+.recipe-edit__save-button {
+	position: relative;
+	min-width: 30px;
+	justify-content: center;
+	color: white;
+	background-color: hsl(100, 100%, 20%);
+
+}
 
 .btn--primary {
 	color: white;
@@ -20,30 +29,38 @@
 	align-items: center;
 	transition: 0.2s;
 	overflow: hidden;
-	width: 100%;
+
 	margin: 2px;
 	
 
 }
 
 .btn--primary:hover {
-	background-color: hsl(200,100%, 50%);
+	background-color: hsl(200,100%, 60%);
 }
-
 
 
 /* Initiate color change for pulse-on-hover */
-button.pulse-button-hover {
-}
 
 button.btn--primary:hover,
 button.btn--primary :focus {
-	animation: borderPulse--primary-btn 1000ms infinite ease-out, hoverShine 200ms linear 0s 2 alternate;
+	animation: borderPulse--primary-btn 1000ms infinite ease-out;
+	animation-delay: 1.5s
 		
 }
 button.btn--danger:hover,
 button.btn--danger:focus {
-	animation: borderPulse--danger-btn 1000ms infinite ease-out, hoverShine 200ms linear 0s 2 alternate;
+	animation: borderPulse--danger-btn 1000ms infinite ease-out;
+	animation-delay: 1.5s
+	}
+
+
+button.btn--primary:active{
+	animation: hoverShine 200ms linear 0s 2 alternate;
+		
+}
+button.btn--danger:active{
+	animation:  hoverShine 200ms linear 0s 2 alternate;
 	}
 
 
@@ -81,7 +98,7 @@ button.btn--danger:focus {
 
 .btn--danger {
 	color: white;
-	background-color:hsl(0, 98%, 66%);
+	background-color:hsl(0, 98%, 50%);
 	position: relative;
 	display: inline-block;
 	justify-content: center;
@@ -92,7 +109,7 @@ button.btn--danger:focus {
 
 .btn--danger:hover {
 	color: white;
-	background-color: hsl(0, 98%, 35%);
+	background-color: hsl(0, 98%, 60%);
 }
 
 .btn--primary span {
