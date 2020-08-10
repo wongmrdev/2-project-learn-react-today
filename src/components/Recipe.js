@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react'
 import IngredientList from './IngredientList';
 import { RecipeContext } from './App'
+//import ModalDeleteConfirmation from './ModalDeleteConfirmation'
 
 export default function Recipe(props) {
-  const {handleRecipeDelete, handleRecipeSelect} = useContext(RecipeContext)
+  const {handleRecipeSelect, handleRecipeDelete} = useContext(RecipeContext)
   const {
     id,
     name,
@@ -13,20 +14,32 @@ export default function Recipe(props) {
     ingredients,
     // already delcared by Context handleRecipeDelete
   } = props
-
+  // const [isConfirming, setIsConfirming] = useState(false)
   const [isActive, toggleActiveClass] = useState(false)
   const activeClass = isActive ? 'active' : ''
   function handleToggleActiveClass(){
     isActive ? toggleActiveClass(false) : toggleActiveClass(true)
   }
+  // function handleDeleteButtonKeyPress() {
+  //   setIsConfirming(true)
+  //   // handleRecipeDelete(id)
+  // }
+  // function handleDeleteCancelButtonKeyPress() {
+  //   setIsConfirming(false)
+  // }
+  
   return (
+    <>
+      {/* JSX IF STATEMENT */}
+      {/* {isConfirming && <ModalDeleteConfirmation id={id} handleDeleteCancelButtonKeyPress={handleDeleteCancelButtonKeyPress}/>}  */}
+
       <div className="recipe">
         <div className={"recipe__header collapsible " + activeClass} onClick={()=>handleToggleActiveClass()}>
           <h3 className="recipe__title ">{name}</h3>
           <div>
             <button 
             className="btn btn--primary mr-1 pulse-button-hover"
-            onClick={()=> handleRecipeSelect(id)}>
+            onClick={(e)=> handleRecipeSelect(e, id)}>
             <span></span>
             <span></span>
             <span></span>
@@ -65,5 +78,6 @@ export default function Recipe(props) {
           </div>
         </div>
       </div>
+    </>
   )
 }

@@ -4,10 +4,9 @@ import '../css/app.css'
 import RecipeEdit from './RecipeEdit'
 import { RecipeContext } from './App'
 
-
 function Home() {
   const { selectedRecipe,
-    whichRecipe } = useContext(RecipeContext)
+    whichRecipe} = useContext(RecipeContext)
   
   
   

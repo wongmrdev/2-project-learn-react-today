@@ -98,34 +98,42 @@ function App() {
   }
 
   function handleRecipeDelete(id) {
-    //delete from backend		
-    fetch('http://localhost:5002/recipe-delete', {
-      method: 'DELETE',
-      //mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({id: id.toString()})
-      })
-      .then(response => response.json())
-      .then(data => {
-      console.log(`Success, reciped id ${id} deleted`);
-      })
-      .catch((error) => {
-      console.error('Error:', error);
-      });
-      //set selectedRecipeId to undefined
-    if (selectedRecipeId != null && selectedRecipeId === id) {
-      setSelectedRecipeId(undefined)
+    if(window.confirm(`Delete Recipe ${id}`)){
+      //delete from backend		
+      fetch('http://localhost:5002/recipe-delete', {
+        method: 'DELETE',
+        //mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({id: id.toString()})
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log(`Success, reciped id ${id} deleted`);
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+        //set selectedRecipeId to undefined
+      if (selectedRecipeId != null && selectedRecipeId === id) {
+        setSelectedRecipeId(undefined)
+      }
+        //delete from frontend
+        setRecipes(recipes.filter(recipe => recipe.id !== id))
     }
-      //delete from frontend
-      setRecipes(recipes.filter(recipe => recipe.id !== id))
-	}
-  
+  }
 
   //function to handle storing edited recipe
-  function handleRecipeSelect(id) {
+  function handleRecipeSelect(e,id) {
+      if(id===selectedRecipeId){
+        setSelectedRecipeId(undefined)
+        return
+      }
+
       setSelectedRecipeId(id)
+      e.stopPropagation()
+
   }
 
   //allow us to change a recipe

@@ -16,7 +16,7 @@ export default function RecipeSearchBar() {
 		<div className="recipe-search-bar-container">
 			<input 
 			type='text'
-			placeholder='Search Recipes'
+			placeholder='Search Recipes, Ingredients, Authors, etc...'
 			id='recipe-search-bar'
 			className='recipe-search-bar__input'
 			onChange={event => handleRecipeSearch(event.target.value)}

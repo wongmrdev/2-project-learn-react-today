@@ -2,6 +2,7 @@
 GET http://localhost:3001/posts
 ###
 POST http://localhost:3001/login
+content-type: application/json
 BODY
 { "username": "matt" }
 ###

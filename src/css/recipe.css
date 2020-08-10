@@ -68,6 +68,7 @@ padding: 0 18px;
 display: none;
 overflow: hidden;
 background-color: #f1f1f1;
+max-height: 0px;
 }
 
 .content.active{
@@ -75,4 +76,23 @@ background-color: #f1f1f1;
 	display: block;
 	overflow: hidden;
 	background-color: #f1f1f1;
+	animation-name: content-unfold;
+	animation-duration: 1s;
+	animation-timing-function: ease-in;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+	}
+
+	@keyframes content-unfold {
+		0% {
+			
+			max-height: 0px;
+
+		}
+		100% {
+			
+			max-height:15000px;
+		}
 	}

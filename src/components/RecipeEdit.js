@@ -65,11 +65,10 @@ export default function RecipeEdit({recipe}) {
 						<div className="recipe-edit__remove-button-container">
 							<FontAwesomeIcon icon= { faStepBackward } 
 							className="btn recipe-edit__remove-button"
-							onClick={() => handleRecipeSelect(undefined)}
+							onClick={(e) => {handleRecipeSubmit(); handleRecipeSelect(e,undefined)}}
 							>
 							</FontAwesomeIcon>				
 						</div>
-						<div></div>
 						<div className="recipe-edit__post-recipe-to-database-button-container">
 							<button 
 							className="btn recipe-edit__save-button"
