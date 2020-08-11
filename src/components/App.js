@@ -98,7 +98,6 @@ function App() {
   }
 
   function handleRecipeDelete(id) {
-    if(window.confirm(`Delete Recipe ${id}`)){
       //delete from backend		
       fetch('http://localhost:5002/recipe-delete', {
         method: 'DELETE',
@@ -121,7 +120,7 @@ function App() {
       }
         //delete from frontend
         setRecipes(recipes.filter(recipe => recipe.id !== id))
-    }
+    
   }
 
   //function to handle storing edited recipe

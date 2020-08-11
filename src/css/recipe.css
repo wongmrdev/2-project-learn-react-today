@@ -9,11 +9,18 @@
 	padding-bottom: 5px;
 }
 .recipe__header {
-	display: flex;
+	display: grid;
+	grid-template-columns: auto auto ;
+	grid-template-rows: auto;	
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 0px;
 
+}
+
+.recipe__header__button-container {
+	justify-content: right;
+	
 }
 
 .recipe__title {

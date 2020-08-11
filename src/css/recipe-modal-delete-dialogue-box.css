@@ -1,23 +1,50 @@
 .delete-dialogue-box {
-    position: absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    background-color: grey;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.75);;
     z-index: 999;
+    padding-top: 25vh;
+    padding-right: 10vw;
+    padding-left: 10vw;
 
 }
+.delete-dialogue-box button:hover {
+    opacity:1 !important;
+}
 .delete-dialogue-box__title {
-    color: white;
-    display: flex;
+    color: rgb(46, 46, 46);
     justify-content: center;
+    grid-area: title;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.delete-dialogue-box__notice {
+    grid-area: notice;
 }
 #confirm-delete {
-    display: flex;
-    justify-content: center;
+    opacity: .6;
+    grid-area: button-2;
 }
 #cancel-delete {
-    display: flex;
-    justify-content: center;
+    opacity: .6;
+    grid-area: button-1;
+}
+
+.modal-grid-container {
+    display: grid;
+    grid-template-areas: 
+    'title title'
+    'notice notice' 
+    'button-1 button-2'
+    'button-1 button-2';
+    gap: 5px;
+    row-gap: 20%;
+    align-content: space-evenly;
+    background-color: #f5e7e7;
+    padding: 5vh 10vh 10vh 5vh;
+    text-align: center;
+    z-index: 1000;
 }

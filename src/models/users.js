@@ -6,8 +6,10 @@ const usersSchema = new mongoose.Schema({
     lastName: {type: String, required: false, default: 'lastName'},
     username: {type: String, required: true},
     password: {type: String, required: true},
-    updated: { type: Date, default: Date.now() }
+    updated: { type: Date, default: Date.now() },
+    country: { type: String, required: false },
+    email: { type: String, required: true}
   
 })
 //export model(<name of Model constructor>, <schema data definition>, <collection to save to>)
-module.exports = mongoose.model('UsersModel', usersSchema, 'users')
+module.exports = mongoose.model('User', usersSchema, 'users')

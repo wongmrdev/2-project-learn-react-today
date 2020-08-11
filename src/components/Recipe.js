@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react'
 import IngredientList from './IngredientList';
 import { RecipeContext } from './App'
-//import ModalDeleteConfirmation from './ModalDeleteConfirmation'
+import ModalDeleteConfirmation from './ModalDeleteConfirmation'
 
 export default function Recipe(props) {
-  const {handleRecipeSelect, handleRecipeDelete} = useContext(RecipeContext)
+  const {handleRecipeSelect} = useContext(RecipeContext)
   const {
     id,
     name,
@@ -14,29 +14,24 @@ export default function Recipe(props) {
     ingredients,
     // already delcared by Context handleRecipeDelete
   } = props
-  // const [isConfirming, setIsConfirming] = useState(false)
+  const [isConfirming, setIsConfirming] = useState(false)
   const [isActive, toggleActiveClass] = useState(false)
   const activeClass = isActive ? 'active' : ''
-  function handleToggleActiveClass(){
+  function handleToggleActiveClass(e){
+    if(e.target.className.includes('btn')) return
     isActive ? toggleActiveClass(false) : toggleActiveClass(true)
   }
-  // function handleDeleteButtonKeyPress() {
-  //   setIsConfirming(true)
-  //   // handleRecipeDelete(id)
-  // }
-  // function handleDeleteCancelButtonKeyPress() {
-  //   setIsConfirming(false)
-  // }
+  
   
   return (
     <>
       {/* JSX IF STATEMENT */}
-      {/* {isConfirming && <ModalDeleteConfirmation id={id} handleDeleteCancelButtonKeyPress={handleDeleteCancelButtonKeyPress}/>}  */}
+      <ModalDeleteConfirmation confirming={isConfirming} name={name} id={id} onClose={()=>setIsConfirming(false)}/>
 
       <div className="recipe">
-        <div className={"recipe__header collapsible " + activeClass} onClick={()=>handleToggleActiveClass()}>
+        <div className={"recipe__header collapsible " + activeClass} onClick={(e)=>handleToggleActiveClass(e)}>
           <h3 className="recipe__title ">{name}</h3>
-          <div>
+          <div className="recipe__header__button-container">
             <button 
             className="btn btn--primary mr-1 pulse-button-hover"
             onClick={(e)=> handleRecipeSelect(e, id)}>
@@ -48,7 +43,7 @@ export default function Recipe(props) {
             </button>
             <button 
               className="btn btn--danger pulse-button-hover"
-              onClick={()=>handleRecipeDelete(id)}>
+              onClick={()=>setIsConfirming(true)}>
               <span></span>
               <span></span>
               <span></span>

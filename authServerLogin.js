@@ -31,7 +31,7 @@ async function createUser(user) {
 					    "updated":  Date.now() 	
 	}
 	
-	const newUser = new UsersModel(sampleUser);
+	const newUser = new User(sampleUser);
 	newUser.save(function (err) {
   		if (err) return handleError(err);
   		console.log(newUser.username + " saved to users collection.");
@@ -43,7 +43,7 @@ async function createUser(user) {
 
 async function handleUsersGet() {
 	try {
-		const users = await UsersModel.find({});
+		const users = await User.find({});
 		//console.log("users: ", users)
 		return users
 
