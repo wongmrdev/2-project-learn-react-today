@@ -1,21 +1,21 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 export default function FRLogo() {
     return (
-        
-            <span id="fr-logo">
-				<div id="letter-f">
-					<span id="letter-f-1"></span>
-					<span id="letter-f-2"></span>
-					<span id="letter-f-3"></span>
-			    </div>
-			    <div id="letter-r">
-					<span id="letter-r-1"></span>
-					<span id="letter-r-2"></span>
-                    <div id="letter-r-3"></div>
-                    <div id="letter-r-4"></div>
+			
+				<div id="fr-logo">
+					<div id="letter-f">
+						<span id="letter-f-1"></span>
+						<span id="letter-f-2"></span>
+						<span id="letter-f-3"></span>
+					</div>
+					<div id="letter-r">
+						<span id="letter-r-1"></span>
+						<span id="letter-r-2"></span>
+						<div id="letter-r-3"></div>
+						<div id="letter-r-4"></div>
+					</div>
 				</div>
-		    </span>
-        
+			
     )
 }

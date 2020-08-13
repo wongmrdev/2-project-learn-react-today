@@ -11,12 +11,12 @@ function Registration() {
           <h1>Registration</h1>
           
           <form>
-            <div>Email</div>
-            <input type="email" name="email"></input>
-            <div>Password</div>
-            <input type="password" name="password"></input>
-            <div>Re-type Password</div>
-            <input type="password" name="verifyPassword"></input>
+           
+            <input type="email" placeholder="Enter email" name="email"></input>
+            
+            <input type="password" placeholder="Enter password" name="password"></input>
+            
+            <input type="password" placeholder="Re-enter password"  name="verifyPassword"></input>
           </form> 
           
           <Link to="/login">

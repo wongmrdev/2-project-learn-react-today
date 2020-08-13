@@ -65,7 +65,7 @@
 }
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsible:hover {
-background-color: #ccc;
+background-color: rgb(226, 226, 226);
 color: #000000
 }
 
@@ -74,15 +74,16 @@ color: #000000
 padding: 0 18px;
 display: none;
 overflow: hidden;
-background-color: #f1f1f1;
+background-color: #ffffff;
 max-height: 0px;
+
 }
 
 .content.active{
 	padding: 0 18px;
 	display: block;
 	overflow: hidden;
-	background-color: #f1f1f1;
+	background-color: #ffffff;
 	animation-name: content-unfold;
 	animation-duration: 1s;
 	animation-timing-function: ease-in;

@@ -1,8 +1,8 @@
 .recipe-search-bar-container {
 	vertical-align: center;
-	padding: 10px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 5px;
+	padding-left: 5pxpx;
+	padding-right: 5px;
 	border-radius: 5px;
 	width: 50vw;
 
@@ -28,8 +28,4 @@
 
 .recipe-search-bar__input:hover {
 	background-color: hsl(126,5%, 99%);
-}
-
-.header__logout-icon {
-	padding: 1vw;
 }

@@ -1,0 +1,34 @@
+.loginForm {
+    display: block;
+    justify-content: space-around;
+    align-content: center;
+    margin: auto;
+    width: 70%;
+    text-align: center;
+}
+.loginForm h1 {
+    font-size: max(1.5rem,3vw);
+}
+.loginForm input {
+    border-radius: 25px;
+    border-color: hsl(0, 98%, 70%);
+    background: none;
+    width: 80%;
+    height: 4.5vh;
+    padding: 1vh;
+    margin: .5vh;
+}
+.loginForm input:hover {
+    border-color: hsl(0, 98%, 50%);
+    border-width: 3px;
+    
+}
+.not-registered {
+    margin-top: 3vh;
+}
+
+input::placeholder {
+    color: black;
+    font-weight:900;
+    opacity: 1;
+  }

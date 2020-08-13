@@ -9,10 +9,10 @@ function Login() {
         <div className="loginForm">
           <h1>Login</h1>
           <form>
-            <div>Email</div>
-            <input type="email" name="email"></input>
-            <div>Password</div>
-            <input type="password" name="password"></input>
+            <div></div>
+            <input type="email" placeholder="Enter Email" name="email"></input>
+            <div></div>
+            <input type="password" placeholder="Enter Password" name="password"></input>
           </form> 
           <Link to="/registration">
           <div className="not-registered">Not Registered?</div>

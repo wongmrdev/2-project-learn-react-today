@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../css/app.css'
 import Routes from './Routes';
-import Header from './Header';
 import uuidv4 from 'uuid/v4'
 import filterRecipeList from '../function-library/filterRecipeList'
 //import Recipes from '../function-library/recipeQuery'
-
 
 export const RecipeContext = React.createContext() //allow global access of variables and functions, 
 //must add Context Wrapper Provider with prop of the objects or functions to make global 
@@ -83,18 +81,18 @@ function App() {
   //add a state that stores the active edit recipe 
   
   function handleRecipeAdd() {
-  const newRecipe = {
-    id: uuidv4(),
-    name: '',
-    servings: 1,
-    cookTime: '',
-    instructions: '',
-    ingredients: [
-    {id: uuidv4(), name: '', amount: ''}]
-  }
-  setSelectedRecipeId(newRecipe.id)
-  setRecipes([...recipes, newRecipe])
-  console.log(recipes)
+    const newRecipe = {
+      id: uuidv4(),
+      name: '',
+      servings: 1,
+      cookTime: '',
+      instructions: '',
+      ingredients: [
+      {id: uuidv4(), name: '', amount: ''}]
+    }
+    setSelectedRecipeId(newRecipe.id)
+    setRecipes([...recipes, newRecipe])
+    console.log(recipes)
   }
 
   function handleRecipeDelete(id) {
@@ -131,7 +129,7 @@ function App() {
       }
 
       setSelectedRecipeId(id)
-      e.stopPropagation()
+      
 
   }
 
@@ -165,7 +163,6 @@ function App() {
   return (
     
     <RecipeContext.Provider value={recipeContextValue}>
-    <Header />
     <Routes />
     </RecipeContext.Provider>
     

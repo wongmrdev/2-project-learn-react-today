@@ -8,6 +8,7 @@
 @import 'recipe-search-bar.css';
 @import 'header.css';
 @import 'recipe-modal-delete-dialogue-box.css';
+@import 'login.css';
 
 *, *::before, *::after {
   font-family: Gotham Rounded, sans-serif;
