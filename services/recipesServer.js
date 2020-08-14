@@ -18,7 +18,6 @@ app.use(function(req, res, next) {
 //connect to mongodb  DATABASE_URL=mongodb://localhost:27017/recipes (already set to recipes database)
 const RecipesModel = require('../src/models/recipes');
 const mongoose = require('mongoose');
-const { deepIncludes } = require('react-query');
 mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true } )
 const db = mongoose.connection
@@ -121,4 +120,4 @@ async function handlePostRecipeUpsert(filter, update) {
 	}
 }
 
-app.listen(5002)
+app.listen( process.env.PORT || 5002)

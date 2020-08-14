@@ -108,4 +108,4 @@ app.post('/users/login', async (req, res) => {
 		res.status(500)
 	}
 })
-app.listen(5001)
+app.listen(process.env.PORT || 5001)

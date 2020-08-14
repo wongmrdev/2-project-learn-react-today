@@ -40,8 +40,14 @@ export default function RecipeEdit({recipe}) {
 	  }
 	
 	function handleRecipeSubmit() {
+		let backendUrl = ''
+		if(process.NODE_ENV !== 'production'){
+			backendUrl = 'http://localhost:5002'
+		  } else {
+			backendUrl = 'https://desolate-inlet-08825.herokuapp.com'
+		  }
 
-		fetch('http://localhost:5002/recipe-upsert', {
+		fetch(backendUrl+'/recipe-upsert', {
 		method: 'POST', // or 'PUT'
 		headers: {
 			'Content-Type': 'application/json',

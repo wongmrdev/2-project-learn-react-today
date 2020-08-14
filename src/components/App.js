@@ -14,13 +14,18 @@ export const RecipeContext = React.createContext() //allow global access of vari
 // Requires useContext Hook 
 
 function App() {
-
+  let backendUrl = ''
+  if(process.NODE_ENV !== 'production'){
+    backendUrl = 'http://localhost:5002'
+  } else {
+    backendUrl = 'https://desolate-inlet-08825.herokuapp.com'
+  }
   //start of recipes
   const [recipes, setRecipes] = useState(sampleRecipes)
+  
   useEffect( () => {
-    
     const fetchDataRecipes = () => {
-      return fetch('/recipes')
+      return fetch(backendUrl+'/recipes')
       .then( res => { console.log('res: ', res)
         return res.json()
       })
@@ -32,7 +37,7 @@ function App() {
     }
 
     fetchDataRecipes()
-  }, [])
+  }, [backendUrl])
   
   
   
@@ -96,8 +101,8 @@ function App() {
   }
 
   function handleRecipeDelete(id) {
-      //delete from backend		
-      fetch('http://localhost:5002/recipe-delete', {
+      //delete from backend
+      fetch(backendUrl+'/recipe-delete', {
         method: 'DELETE',
         //mode: 'no-cors',
         headers: {
