@@ -16,7 +16,9 @@ export const RecipeContext = React.createContext() //allow global access of vari
 function App() {
   let backendUrl ='' //to be a global variable the variable needs to be declared outside the scope of the conditional.
   console.log(process.env.NODE_ENV)
-  if(process.NODE_ENV == 'production' || process.env.NODE_ENV =='development'){
+  //pushing to heroku on master branch will cause NODE_ENV to default to 'productions'
+  //pushing to heroku on non-master branch will cause NODE_ENV to default to 'development'
+  if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){ 
     backendUrl = 'https://desolate-inlet-08825.herokuapp.com'
     } else {
     backendUrl = 'http://localhost:5002'
@@ -175,6 +177,20 @@ function App() {
      
     )
 }
+let loadingRecipes = []
+if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){ 
+  loadingRecipes = [{
+    "id": 1,
+    "name": "Loading Recipes...Please wait..."
+    "servings": null,
+    "cookTime": null,
+    "instructions": "",
+    "ingredients": []
+  }]
+  } else {
+    loadingRecipes = sampleRecipes
+  }
+  
 
 const sampleRecipes = [
   {

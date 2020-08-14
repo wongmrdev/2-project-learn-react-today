@@ -41,7 +41,7 @@ export default function RecipeEdit({recipe}) {
 	
 	function handleRecipeSubmit() {
 		let backendUrl = ''
-		if(process.NODE_ENV == 'production' || process.env.NODE_ENV == 'development'){
+		if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){
 			backendUrl = 'https://desolate-inlet-08825.herokuapp.com'
 		  } else {
 			backendUrl = 'http://localhost:5002'
