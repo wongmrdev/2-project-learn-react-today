@@ -16,7 +16,7 @@ export const RecipeContext = React.createContext() //allow global access of vari
 function App() {
   let backendUrl =''
   console.log(process.env.NODE_ENV)
-  if(process.env.NODE_ENV !== 'production'){
+  if(process.env.NODE_ENV !== 'production' || process.NODE_ENV !=='development'){
     backendUrl = 'http://localhost:5002'
   } else {
     backendUrl = 'https://desolate-inlet-08825.herokuapp.com'
