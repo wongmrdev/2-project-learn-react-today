@@ -34,7 +34,7 @@
     "devStartAuth": "nodemon authServer.js",
     "devStartLogin": "nodemon authServerLogin.js",
     "devStartRecipeServer": "nodemon ./services/recipesServer",
-    "start": "set PORT=3007 && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
