@@ -16,11 +16,11 @@ export const RecipeContext = React.createContext() //allow global access of vari
 function App() {
   let backendUrl ='' //to be a global variable the variable needs to be declared outside the scope of the conditional.
   console.log(process.env.NODE_ENV)
-  if(process.env.NODE_ENV !== 'production' && process.NODE_ENV !=='development'){
-    backendUrl = 'http://localhost:5002'
-  } else {
+  if(process.NODE_ENV == 'production' || process.env.NODE_ENV =='development'){
     backendUrl = 'https://desolate-inlet-08825.herokuapp.com'
-  }
+    } else {
+    backendUrl = 'http://localhost:5002'
+    }
   //start of recipes
   const [recipes, setRecipes] = useState(sampleRecipes)
   
