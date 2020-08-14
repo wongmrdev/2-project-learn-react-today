@@ -14,9 +14,9 @@ export const RecipeContext = React.createContext() //allow global access of vari
 // Requires useContext Hook 
 
 function App() {
-  let backendUrl =''
+  let backendUrl ='' //to be a global variable the variable needs to be declared outside the scope of the conditional.
   console.log(process.env.NODE_ENV)
-  if(process.env.NODE_ENV !== 'production' || process.NODE_ENV !=='development'){
+  if(process.env.NODE_ENV !== 'production' && process.NODE_ENV !=='development'){
     backendUrl = 'http://localhost:5002'
   } else {
     backendUrl = 'https://desolate-inlet-08825.herokuapp.com'
