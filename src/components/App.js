@@ -14,7 +14,7 @@ export const RecipeContext = React.createContext() //allow global access of vari
 // Requires useContext Hook 
 
 function App() {
-  
+  let backendUrl =''
   console.log(process.env.NODE_ENV)
   if(process.env.NODE_ENV !== 'production'){
     backendUrl = 'http://localhost:5002'
