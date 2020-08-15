@@ -1,7 +1,5 @@
 .recipe {
 	border-bottom: 1px solid black;
-
-
 }
 
 .recipe:last-child {
@@ -10,7 +8,7 @@
 }
 .recipe__header {
 	display: grid;
-	grid-template-columns: auto auto ;
+	grid-template-columns: auto auto;
 	grid-template-rows: auto;	
 	justify-content: space-between;
 	align-items: center;
@@ -19,7 +17,8 @@
 }
 
 .recipe__header__button-container {
-	justify-content: right;
+	justify-content:;
+	width: 100%
 	
 }
 
@@ -35,7 +34,7 @@
 }
 
 .recipe__label {
-	margin-right: 5px;
+	margin-right: 0px;
 
 }
 .recipe__value {
@@ -43,8 +42,8 @@
 
 }
 .recipe__value--indented {
-	margin-top: 10px;
-	margin-left: 20px;
+	margin-top: 5px;
+	margin-left: 10px;
 }
 
 .recipe__instructions {
@@ -104,3 +103,112 @@ max-height: 0px;
 			max-height:15000px;
 		}
 	}
+
+@media only screen and (min-width: 900px) {
+	.recipe {
+		border-bottom: 1px solid black;
+	
+	
+	}
+	
+	.recipe:last-child {
+		border-bottom: none;
+		padding-bottom: 5px;
+	}
+	.recipe__header {
+		display: grid;
+		grid-template-columns: auto auto ;
+		grid-template-rows: auto;	
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0px;
+	
+	}
+	
+	.recipe__header__button-container {
+		justify-content: right;
+		
+	}
+	
+	.recipe__title {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 700;
+	}
+	
+	.recipe__row {
+		margin: 5px;
+	
+	}
+	
+	.recipe__label {
+		margin-right: 5px;
+	
+	}
+	.recipe__value {
+		font-weight: 300;
+	
+	}
+	.recipe__value--indented {
+		margin-top: 10px;
+		margin-left: 20px;
+	}
+	
+	.recipe__instructions {
+		white-space: pre-wrap;
+	}
+	
+	/* Style the button that is used to open and close the collapsible content */
+	.collapsible {
+		background-color: #ffffff;
+		color: #444444;
+		cursor: pointer;
+		padding: 18px;
+		width: 100%;
+		border: none;
+		text-align: left;
+		outline: none;
+		font-size: 15px;
+	}
+	/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+	.active, .collapsible:hover {
+	background-color: rgb(226, 226, 226);
+	color: #000000
+	}
+	
+	/* Style the collapsible content. Note: hidden by default */
+	.content {
+	padding: 0 18px;
+	display: none;
+	overflow: hidden;
+	background-color: #ffffff;
+	max-height: 0px;
+	
+	}
+	
+	.content.active{
+		padding: 0 18px;
+		display: block;
+		overflow: hidden;
+		background-color: #ffffff;
+		animation-name: content-unfold;
+		animation-duration: 1s;
+		animation-timing-function: ease-in;
+		animation-delay: 0s;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-fill-mode: forwards;
+		}
+	
+		@keyframes content-unfold {
+			0% {
+				
+				max-height: 0px;
+	
+			}
+			100% {
+				
+				max-height:15000px;
+			}
+		}
+}

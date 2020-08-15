@@ -1,7 +1,8 @@
 .app-header {
 	display: flex;
-	justify-content: space-around;
-	align-items: center;
+	justify-content: center;
+	align-items: stretch;
+	column-gap: 2px;
 	height: 4.5vw;
 	min-height: 1.5rem;
 	max-height: 2.5rem;
@@ -11,19 +12,39 @@
 	position: sticky;
 	top: 0;
 	z-index: 1;
+	padding: 1px;
 
 }
-#fr-logo {	
+a {
+	text-decoration: none;
+}
+a.fr-logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: content-box;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 8px;	
+	font-size: max(.6rem,calc(0.6rem + 1vw));
+	font-weight: 500;
+	color: white;
+	border: solid 2px white;
+	text-align: center;
+}
+
+/* #fr-logo {	
 	position: relative;
 	height: 100%;
 	width: 100%;
+	min-width: 43px;
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-template-rows: auto;
 	padding: .25vw;
 	border-radius: 5%;
-	background-color: white;
-}
+	background-color: white; 
+}*/
 #letter-f {
 	position: relative;
 	height: 100%;
@@ -104,15 +125,19 @@
 	border-bottom-right-radius: 0;
 }
 .btn--header {
-	font-size: 12px;	
-	font-size: max(12px,2vw);;
 }
 
-a.fr-logo {
-	height: 100%;
-	width: 8%;
-	padding: 5px;
-	vertical-align: middle;
+.btn--header__recipe-add {
+	max-height: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top:5px;
+	min-width: 70px;
+	font-size: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: clamp(.5rem, calc(4.5vw - 1rem), 1.25rem);
 }
 
 a.header__logout-icon {
@@ -123,6 +148,13 @@ a.header__logout-icon {
 	vertical-align: middle;
 }
 .btn--header.header__logout-icon {
-	font-size: max(12px,3vw);;
+	margin-left: clamp(5px,(5px+1vw),10px);
+	max-height: 100%;
+	font-size: clamp(1.25rem, calc(4.5vw - 16px), 2rem);
 }
 
+@media only screen and (min-width: 900px) {
+	.app-header {
+		z-index: 1;
+	}
+}

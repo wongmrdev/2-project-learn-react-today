@@ -13,12 +13,12 @@ export default function Header() {
 	
 	return (
 		<div className="app-header">
-			<Link to="/" className="fr-logo"><FRLogo /></Link>
+			<Link to="/" className="fr-logo">FR</Link>
 					
 		    <RecipeSearchBar/>
 		    <Link to="/">
 				<button 
-					className="btn btn--primary btn--header"
+					className="btn btn--header btn--primary btn--header__recipe-add"
 					onClick={handleRecipeAdd}>
 					<span></span>
 					<span></span>
