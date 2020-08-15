@@ -1,10 +1,14 @@
-import React, { useContext } from 'react';
+//import libraries
+import React, { useContext } from 'react'
+import uuidv4 from 'uuid/v4'
+//import components, context
 import { RecipeContext } from './App'
 import RecipeIngredientEdit from './RecipeIngredientEdit'  //used to allow a child component to be used in this component JSX
-import uuidv4 from 'uuid/v4'
+//import icons 
 import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import postData from '../function-library/postData'
+//import user-functions, global variables
+import backendUrl from '../function-library/setBackendUrl'
 
 export default function RecipeEdit({recipe}) {
 	
@@ -40,13 +44,6 @@ export default function RecipeEdit({recipe}) {
 	  }
 	
 	function handleRecipeSubmit() {
-		let backendUrl = ''
-		if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){
-			backendUrl = 'https://desolate-inlet-08825.herokuapp.com'
-		  } else {
-			backendUrl = 'http://localhost:5002'
-		  }
-
 		fetch(backendUrl+'/recipe-upsert', {
 		method: 'POST', // or 'PUT'
 		headers: {

@@ -1,9 +1,17 @@
+//import libraries
 import React, { useState, useEffect } from 'react';
-import '../css/app.css'
-import Routes from './Routes';
 import uuidv4 from 'uuid/v4'
+//import routes, components, context
+
+import Routes from './Routes';
+//import icons 
+//import user-functions, global variables
 import filterRecipeList from '../function-library/filterRecipeList'
-//import Recipes from '../function-library/recipeQuery'
+import backendUrl from '../function-library/setBackendUrl'
+//import css
+import '../css/app.css'
+
+//start app logic
 
 export const RecipeContext = React.createContext() //allow global access of variables and functions, 
 //must add Context Wrapper Provider with prop of the objects or functions to make global 
@@ -14,17 +22,8 @@ export const RecipeContext = React.createContext() //allow global access of vari
 // Requires useContext Hook 
 
 function App() {
-  let backendUrl ='' //to be a global variable the variable needs to be declared outside the scope of the conditional.
-  console.log(process.env.NODE_ENV)
-  //pushing to heroku on master branch will cause NODE_ENV to default to 'productions'
-  //pushing to heroku on non-master branch will cause NODE_ENV to default to 'development'
-  if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){ 
-    backendUrl = 'https://desolate-inlet-08825.herokuapp.com'
-    } else {
-    backendUrl = 'http://localhost:5002'
-    }
   //start of recipes
-  const [recipes, setRecipes] = useState(sampleRecipes)
+  const [recipes, setRecipes] = useState(loadingRecipes)
   
   useEffect( () => {
     const fetchDataRecipes = () => {
@@ -40,7 +39,7 @@ function App() {
     }
 
     fetchDataRecipes()
-  }, [backendUrl])
+  }, [])
   
   
   
@@ -177,20 +176,7 @@ function App() {
      
     )
 }
-let loadingRecipes = []
-if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){ 
-  loadingRecipes = [{
-    "id": 1,
-    "name": "Loading Recipes...Please wait..."
-    "servings": null,
-    "cookTime": null,
-    "instructions": "",
-    "ingredients": []
-  }]
-  } else {
-    loadingRecipes = sampleRecipes
-  }
-  
+
 
 const sampleRecipes = [
   {
@@ -254,4 +240,18 @@ const sampleRecipes = [
   }
 ]
 
+let loadingRecipes = []
+if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){ 
+  loadingRecipes = [{
+    "id": 1,
+    "name": "Loading Recipes...Please wait...",
+    "servings": null,
+    "cookTime": null,
+    "instructions": "",
+    "ingredients": []
+  }]
+  } else {
+    loadingRecipes = sampleRecipes
+  }
+  
 export default App;
