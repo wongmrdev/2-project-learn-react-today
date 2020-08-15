@@ -150,7 +150,7 @@ a.header__logout-icon {
 .btn--header.header__logout-icon {
 	margin-left: clamp(5px,(5px+1vw),10px);
 	max-height: 100%;
-	font-size: clamp(1.25rem, calc(4.5vw - 16px), 2rem);
+	font-size: clamp(1.25rem, calc(4.5vw - 11px), 2.25rem);
 }
 
 @media only screen and (min-width: 900px) {
