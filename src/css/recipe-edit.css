@@ -9,6 +9,7 @@
 	padding-bottom: 50px;
 	background-color: white;
 	font-size: 16px;
+	z-index: 2;
 }
 .recipe-edit__container {
 	
@@ -16,7 +17,7 @@
 	padding-bottom: 10px;
 	position: sticky;
 	background-color: white;
-	z-index: 2;
+	
 }
 .recipe-edit__header-buttons-container {
 	display: grid;
@@ -113,6 +114,7 @@ textarea.recipe-edit__input {
 		overflow-y: auto;
 		padding: 0px 30px 50px 30px;
 		font-size: 1rem;
+		z-index: 0;
 	}
 	.recipe-edit__container {
 		top: 0;
@@ -120,7 +122,6 @@ textarea.recipe-edit__input {
 		padding-bottom: 5px;
 		position: sticky;
 		background-color: white;
-		z-index: 1;
 	}
 	.recipe-edit__header-buttons-container {
 		display: grid;
