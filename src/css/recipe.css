@@ -6,6 +6,7 @@
 	border-bottom: none;
 	padding-bottom: 5px;
 }
+
 .recipe__header {
 	display: grid;
 	grid-template-columns: auto auto;
@@ -13,12 +14,10 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 0px;
-
 }
 
 .recipe__header__button-container {
-	justify-content:;
-	width: 100%
+	width: 100%;
 	
 }
 

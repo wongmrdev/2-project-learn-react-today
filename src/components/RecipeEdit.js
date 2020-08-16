@@ -1,9 +1,10 @@
 //import libraries
-import React, { useContext } from 'react'
+import React, { useContext,useEffect } from 'react'
 import uuidv4 from 'uuid/v4'
 //import components, context
 import { RecipeContext } from './App'
 import RecipeIngredientEdit from './RecipeIngredientEdit'  //used to allow a child component to be used in this component JSX
+import RecipeAuthorEdit from './RecipeAuthorEdit'
 //import icons 
 import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,11 +12,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import backendUrl from '../function-library/setBackendUrl'
 
 export default function RecipeEdit({recipe}) {
-	
-	console.log('RecipeEdit Rendered')
 	const { handleRecipeChange,
-		 handleRecipeSelect,
-		selectedRecipe } = useContext(RecipeContext)
+		handleRecipeSelect,
+	   selectedRecipe } = useContext(RecipeContext)
+	//handle missing data
+	console.log("recipeEdit recipe.authors:", recipe.authors)
+	if(recipe.authors === undefined) { 
+			recipe.authors = [{id: uuidv4(), name: "", email: ""}]
+		} 
+	console.log("recipeEdit recipe.authors:", recipe.authors)
+	
+	
+
+		
+	
+		// recipe.historicalAuthor === undefined ? handleChange({historicalAuthor: ""})  : 
+		// recipe.originCountry === undefined ? handleChange({originCountry: ""}) : 
+		// recipe.originWorldRegion === undefined ? handleChange({originWorldRegion: ""}) :
+	
+
+	console.log('RecipeEdit Rendered')
+	
 
 	function handleChange(changes) {
 		handleRecipeChange(recipe.id, {...recipe, ...changes })
@@ -41,6 +58,28 @@ export default function RecipeEdit({recipe}) {
 
   	function handleIngredientDelete(id) {
   		handleChange({ingredients: recipe.ingredients.filter(i => i.id !== id)})
+	  }
+
+	function handleAuthorChange(id, author){
+		const newAuthors = [...recipe.authors]
+    	const index = newAuthors.findIndex(i => i.id === id)
+    	newAuthors[index] = author
+    	handleChange({ authors: newAuthors })
+	}
+
+	function handleAuthorAdd(){
+    	
+    	const newAuthor = {
+     	    id: uuidv4(),
+      	    name: '',
+     	    email: ''
+    	}
+
+    	handleChange({ authors: [...recipe.authors, newAuthor]})    
+  	}
+
+  	function handleAuthorDelete(id) {
+  		handleChange({authors: recipe.authors.filter(i => i.id !== id)})
 	  }
 	
 	function handleRecipeSubmit() {
@@ -135,8 +174,80 @@ export default function RecipeEdit({recipe}) {
 			    		onChange={ event => handleChange({instructions: event.target.value})}
 			    		value={recipe.instructions}
 			    	></textarea>
+					
+					<label 
+				      	htmlFor="historicalAuthor" 
+				      	className="recipe-edit__label">
+				      	Historical Author
+			      	</label>
+			    	<input 
+			    		type="text" 
+			    		name="historicalAuthor"
+			    		id="historicalAuthor" 
+			    		className="recipe-edit__input"
+			    		onChange={ event => handleChange({historicalAuthor: event.target.value})}
+			    		value={recipe.historicalAuthor}
+			    	></input>
+					<label 
+				      	htmlFor="originCountry" 
+				      	className="recipe-edit__label">
+				      	Country Origin
+			      	</label>
+			    	<input 
+			    		type="text" 
+			    		name="originCountry"
+			    		id="originCountry" 
+			    		className="recipe-edit__input"
+			    		onChange={ event => handleChange({originCountry: event.target.value})}
+			    		value={recipe.originCountry}
+			    	></input>
+					<label 
+				      	htmlFor="originWorldRegion" 
+				      	className="recipe-edit__label">
+				      	World Origin Region
+			      	</label>
+					<input 
+				    	type="text"
+						list="originWorldRegion" 
+				    	name="originWorldRegion" 
+				    	id="originWorldRegion" 
+				    	className="recipe-edit__input"
+						value={recipe.originWorldRegion}
+						onChange={ event => handleChange({originWorldRegion: event.target.value})}
+				    />
+					<datalist id="originWorldRegion">
+							<option key="1" value="Africa"/>
+							<option key="2"  value="Americas"/>
+							<option key="3" value="Asia"/>
+							<option key="4" value="Europe"/>
+							<option key="5" value="Oceania"/>
+					</datalist>
 			    </div>
-			    <br/>
+				<br/>
+				<label 
+				className="recipe-edit__label">
+				Author(s)
+				</label>
+				<div className='recipe-edit__ingredient-grid'>
+					<div>Name</div>
+					<div>Email</div>
+					<div></div>
+					{recipe.authors.map( author => (
+						<RecipeAuthorEdit 
+						key={author.id} 
+						author={author}
+						handleAuthorChange={handleAuthorChange}
+						handleAuthorDelete={handleAuthorDelete}
+						handleAuthorAdd={handleAuthorAdd}/>
+					))}
+				</div>
+				<div className="recipe-edit__add-author-button-container">
+					<button 
+						className="btn btn--primary" 
+						onClick={() => handleAuthorAdd()}>
+					Add Author
+					</button>
+				</div>
 			    <label 
 			    	className="recipe-edit__label">
 			    	Ingredients
@@ -153,7 +264,7 @@ export default function RecipeEdit({recipe}) {
 			    		handleIngredientDelete={handleIngredientDelete}
 			    		handleIngredientAdd={handleIngredientAdd}/>
 			    	))}
-			    				    </div>
+			    </div>
 			    <div className="recipe-edit__add-ingredient-button-container">
 			    	<button 
 			    		className="btn btn--primary" 

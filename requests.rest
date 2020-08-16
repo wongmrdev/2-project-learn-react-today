@@ -24,7 +24,7 @@ POST http://localhost:5002/recipe-upsert HTTP/1.1
 content-type: application/json
 
  {
-    "id": 12,
+    "id": 22,
     "servings": "15",
     "cookTime": "1:45",
     "instructions": "1. Put salt on chicken\n2. Put chicken in oven\n3. Eat chicken",

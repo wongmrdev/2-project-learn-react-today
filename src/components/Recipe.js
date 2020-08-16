@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import IngredientList from './IngredientList';
+import AuthorList from './AuthorList';
 import { RecipeContext } from './App'
 import ModalDeleteConfirmation from './ModalDeleteConfirmation'
 
@@ -12,13 +13,19 @@ export default function Recipe(props) {
     servings,
     instructions,
     ingredients,
+    authors,
+    historicalAuthor,
+    originCountry,
+    originWorldRegion
     // already delcared by Context handleRecipeDelete
   } = props
   const [isConfirming, setIsConfirming] = useState(false)
   const [isActive, toggleActiveClass] = useState(false)
   const activeClass = isActive ? 'active' : ''
+  
   function handleToggleActiveClass(e){
-    if(e.target.className.includes('btn')) return
+      if (e.target.className.includes('btn', 'recipe__label', 'recipe__value')) return
+    
     isActive ? toggleActiveClass(false) : toggleActiveClass(true)
   }
   
@@ -52,7 +59,7 @@ export default function Recipe(props) {
             </button>
           </div>
         </div>
-        <div className={"content " + activeClass} onClick={()=>handleToggleActiveClass()}>
+        <div className={"content " + activeClass} onClick={(e)=>handleToggleActiveClass(e)}>
           <div className="recipe__row">
             <span className="recipe__label">Cook Time:</span>
             <span className="recipe__value">{cookTime}</span>
@@ -64,6 +71,24 @@ export default function Recipe(props) {
           <div className="recipe__row">
             <span className="recipe__label">Instructions:</span>
             <div className="recipe__value recipe__value--indented recipe__instructions ">{instructions}</div>
+          </div>
+          <div className="recipe__row">
+            <span className="recipe__label">Author(s):</span>
+            <div className="recipe__value recipe__value--indented">
+              <AuthorList authors={authors} />
+            </div>
+          </div>
+          <div className="recipe__row">
+            <span className="recipe__label">Originating Author:</span>
+            <span className="recipe__value">{historicalAuthor}</span>
+          </div>
+          <div className="recipe__row">
+            <span className="recipe__label">Country:</span>
+            <span className="recipe__value">{originCountry}</span>
+          </div>
+          <div className="recipe__row">
+            <span className="recipe__label">World Region:</span>
+            <span className="recipe__value">{originWorldRegion}</span>
           </div>
           <div className="recipe__row">
             <span className="recipe__label">Ingredients:</span>

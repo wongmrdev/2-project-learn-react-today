@@ -90,6 +90,10 @@ textarea.recipe-edit__input {
 	height: 100px;
 }
 
+.recipe-edit__add-author-button-container {
+	margin: 20px;
+	text-align: center;
+}
 .recipe-edit__ingredient-grid {
 	display: grid;
 	grid-template-columns: repeat(3, auto);

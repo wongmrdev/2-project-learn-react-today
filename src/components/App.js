@@ -93,6 +93,10 @@ function App() {
       name: '',
       servings: 1,
       cookTime: '',
+      authors:[{id: uuidv4(), name:'', email:''}],
+      historicalAuthor:'',
+      originCountry:'',
+      originWorldRegion:'',
       instructions: '',
       ingredients: [
       {id: uuidv4(), name: '', amount: ''}]
@@ -184,6 +188,10 @@ const sampleRecipes = [
     "name": "Plain Chicken",
     "servings": 3,
     "cookTime": "1:45",
+    "authors": [{id: 1, name:'mwong', email: 'matthew.raymond.wong@gmail.com'}],
+    "historicalAuthor":'nbunny',
+    "originCountry":'',
+    "originWorldRegion":'',
     "instructions": "1. Put salt on chicken\n2. Put chicken in oven\n3. Eat chicken",
     "ingredients": [
       {
@@ -203,6 +211,10 @@ const sampleRecipes = [
     "name": "Plain Pork",
     "servings": 5,
     "cookTime": "0:45",
+    "authors": [{id: 1, name:'mwong', email: 'matthew.raymond.wong@gmail.com'}],
+    "historicalAuthor":'nbunny',
+    "originCountry":'',
+    "originWorldRegion":'',
     "instructions": "1. Put paprika on pork\n2. Put pork in oven\n3. Eat pork",
     "ingredients": [
       {
@@ -236,6 +248,10 @@ const sampleRecipes = [
     ,{id: "99fe69a1-6eb9-48f6-9dad-89f45661da93", name: "Neutral Frying Oil", amount: "as needed "}],
     instructions: "*Sugar is to taste. 3-4 pieces wong tong (chinese brown sugar) and 0.25 cup granulated sugar is a good starting point. Adjust future batches to your liking (I used about 8 tsp white sugar)↵↵1. Sprinkle sherry, then flour over ribs. (or substitute sherry with 0.5x apple cider vinegar) Coat ribs evenly and let marinate for 15 minutes.↵↵2. Fill frying pan with enough oil to submerge ribs 25-50%. Brown ribs on medium-high heat on all sides. ↵↵3. As ribs are browned, put ribs in a large heavy heated pot. Add soy sauces,  crushed garlic and hoi sin sauce. Toss well. Be sue ribs are well-coated with sauce.↵↵4. Level ribs to cover the bottom of the pot. Without stirring futher, add vinegar (adjust amout if necessary--should almost cover the ribs) then the water. Bring to boil. Lower heat, cover pot and simmer for 30 minutes.↵5. Add sugar and continue cooking another 0-25 minutes. watch carefully to prevent scorching and stir only if necessary.  Meat should be tender but not falling off the bone. ↵↵6. If sauce is too thin, thicken with a small amount of cornstarch↵↵--With love from the kitchen of Dorothy C. Wong",
     name: "Chinese Style Sweet Sour Spare Ribs",
+    "authors": [{id: 1, name:'mwong', email: 'matthew.raymond.wong@gmail.com'}],
+    "historicalAuthor":'nbunny',
+    "originCountry":'',
+    "originWorldRegion":'',
     servings: 8
   }
 ]
@@ -245,8 +261,8 @@ if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){
   loadingRecipes = [{
     "id": 1,
     "name": "Loading Recipes...Please wait...",
-    "servings": null,
-    "cookTime": null,
+    "servings": "",
+    "cookTime": "",
     "instructions": "",
     "ingredients": []
   }]

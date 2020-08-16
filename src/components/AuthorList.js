@@ -2,6 +2,9 @@ import React from 'react'
 import Author from './Author'
 
 export default function AuthorList({ authors }) {
+	if(!authors) {
+		return null 
+	} 
 	const authorElements = authors.map(author => {
 		return <Author key={author.id} {...author} />
 	})
