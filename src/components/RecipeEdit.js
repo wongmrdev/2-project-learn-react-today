@@ -1,5 +1,5 @@
 //import libraries
-import React, { useContext,useEffect } from 'react'
+import React, { useContext } from 'react'
 import uuidv4 from 'uuid/v4'
 //import components, context
 import { RecipeContext } from './App'

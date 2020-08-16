@@ -1,6 +1,6 @@
 
 console.log("started express recipeServer.js")
-if(process.NODE_ENV !== 'production') {
+if(process.env.NODE_ENV !== 'production') {
 		require('dotenv').config()
 }
 const uuidv4 = require('uuid/v4');
