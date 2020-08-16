@@ -20,7 +20,7 @@ export default function RecipeAuthorEdit(props) {
 				onChange={event => handleChange({name: event.target.value})}
 			/>
 			<input
-				type="text"
+				type="email"
 				className="recipe-edit__input"
 				value={author.email}
 				onChange={event => handleChange({email: event.target.value})}

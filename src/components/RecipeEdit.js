@@ -174,56 +174,33 @@ export default function RecipeEdit({recipe}) {
 			    		onChange={ event => handleChange({instructions: event.target.value})}
 			    		value={recipe.instructions}
 			    	></textarea>
-					
-					<label 
-				      	htmlFor="historicalAuthor" 
-				      	className="recipe-edit__label">
-				      	Historical Author
-			      	</label>
-			    	<input 
-			    		type="text" 
-			    		name="historicalAuthor"
-			    		id="historicalAuthor" 
-			    		className="recipe-edit__input"
-			    		onChange={ event => handleChange({historicalAuthor: event.target.value})}
-			    		value={recipe.historicalAuthor}
-			    	></input>
-					<label 
-				      	htmlFor="originCountry" 
-				      	className="recipe-edit__label">
-				      	Country Origin
-			      	</label>
-			    	<input 
-			    		type="text" 
-			    		name="originCountry"
-			    		id="originCountry" 
-			    		className="recipe-edit__input"
-			    		onChange={ event => handleChange({originCountry: event.target.value})}
-			    		value={recipe.originCountry}
-			    	></input>
-					<label 
-				      	htmlFor="originWorldRegion" 
-				      	className="recipe-edit__label">
-				      	World Origin Region
-			      	</label>
-					<input 
-				    	type="text"
-						list="originWorldRegion" 
-				    	name="originWorldRegion" 
-				    	id="originWorldRegion" 
-				    	className="recipe-edit__input"
-						value={recipe.originWorldRegion}
-						onChange={ event => handleChange({originWorldRegion: event.target.value})}
-				    />
-					<datalist id="originWorldRegion">
-							<option key="1" value="Africa"/>
-							<option key="2"  value="Americas"/>
-							<option key="3" value="Asia"/>
-							<option key="4" value="Europe"/>
-							<option key="5" value="Oceania"/>
-					</datalist>
-			    </div>
+				</div>
 				<br/>
+				<label 
+					className="recipe-edit__label">
+					Ingredients
+				</label>
+				<div className='recipe-edit__ingredient-grid'>
+					<div>Name</div>
+					<div>Amount</div>
+					<div></div>
+					{recipe.ingredients.map( ingredient => (
+						<RecipeIngredientEdit 
+						key={ingredient.id} 
+						ingredient={ingredient}
+						handleIngredientChange={handleIngredientChange}
+						handleIngredientDelete={handleIngredientDelete}
+						handleIngredientAdd={handleIngredientAdd}/>
+					))}
+				</div>
+				<div className="recipe-edit__add-ingredient-button-container">
+					<button 
+						className="btn btn--primary" 
+						onClick={() => handleIngredientAdd()}>
+					Add Ingredient
+					</button>
+				</div>
+			    <br/>
 				<label 
 				className="recipe-edit__label">
 				Author(s)
@@ -248,30 +225,55 @@ export default function RecipeEdit({recipe}) {
 					Add Author
 					</button>
 				</div>
-			    <label 
-			    	className="recipe-edit__label">
-			    	Ingredients
-			    </label>
-			    <div className='recipe-edit__ingredient-grid'>
-			    	<div>Name</div>
-			    	<div>Amount</div>
-			    	<div></div>
-			    	{recipe.ingredients.map( ingredient => (
-			    		<RecipeIngredientEdit 
-			    		key={ingredient.id} 
-			    		ingredient={ingredient}
-			    		handleIngredientChange={handleIngredientChange}
-			    		handleIngredientDelete={handleIngredientDelete}
-			    		handleIngredientAdd={handleIngredientAdd}/>
-			    	))}
-			    </div>
-			    <div className="recipe-edit__add-ingredient-button-container">
-			    	<button 
-			    		className="btn btn--primary" 
-			    		onClick={() => handleIngredientAdd()}>
-			    	Add Ingredient
-			    	</button>
-			    </div>
+				<div className="recipe-edit__details-grid">
+					<label 
+						htmlFor="historicalAuthor" 
+						className="recipe-edit__label">
+						Historical Author
+					</label>
+					<input 
+						type="text" 
+						name="historicalAuthor"
+						id="historicalAuthor" 
+						className="recipe-edit__input"
+						onChange={ event => handleChange({historicalAuthor: event.target.value})}
+						value={recipe.historicalAuthor}
+					></input>
+					<label 
+						htmlFor="originCountry" 
+						className="recipe-edit__label">
+						Country Origin
+					</label>
+					<input 
+						type="text" 
+						name="originCountry"
+						id="originCountry" 
+						className="recipe-edit__input"
+						onChange={ event => handleChange({originCountry: event.target.value})}
+						value={recipe.originCountry}
+					></input>
+					<label 
+						htmlFor="originWorldRegion" 
+						className="recipe-edit__label">
+						World Origin Region
+					</label>
+					<input 
+						type="text"
+						list="originWorldRegion" 
+						name="originWorldRegion" 
+						id="originWorldRegion" 
+						className="recipe-edit__input"
+						value={recipe.originWorldRegion}
+						onChange={ event => handleChange({originWorldRegion: event.target.value})}
+					/>
+					<datalist id="originWorldRegion">
+							<option value="Africa"/>
+							<option value="Americas"/>
+							<option value="Asia"/>
+							<option value="Europe"/>
+							<option value="Oceania"/>
+					</datalist>
+				</div>
 			</div>
 		</div>
 	)
