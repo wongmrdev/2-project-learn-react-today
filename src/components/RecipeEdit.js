@@ -259,14 +259,14 @@ export default function RecipeEdit({recipe}) {
 					</label>
 					<input 
 						type="text"
-						list="originWorldRegion" 
-						name="originWorldRegion" 
-						id="originWorldRegion" 
+						list="originWorldRegionList" 
+						id="originWorldRegion"
+						name="originWorldRegion"
 						className="recipe-edit__input"
 						value={recipe.originWorldRegion}
 						onChange={ event => handleChange({originWorldRegion: event.target.value})}
 					/>
-					<datalist id="originWorldRegion">
+					<datalist id="originWorldRegionList">
 							<option value="Africa"/>
 							<option value="Americas"/>
 							<option value="Asia"/>

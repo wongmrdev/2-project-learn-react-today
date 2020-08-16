@@ -121,10 +121,11 @@ textarea.recipe-edit__input {
 	}
 	.recipe-edit__container {
 		top: 0;
-		padding-top: 10px;
+		padding-top: 5px;
 		padding-bottom: 5px;
 		position: sticky;
 		background-color: white;
+		z-index: 3;
 	}
 	.recipe-edit__header-buttons-container {
 		display: grid;
