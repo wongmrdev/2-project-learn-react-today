@@ -23,11 +23,29 @@ export const RecipeContext = React.createContext() //allow global access of vari
 
 function App() {
   //start of recipes
-  const [recipes, setRecipes] = useState(loadingRecipes)
+  // let loadingRecipes 
+  // if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){ 
+  //   loadingRecipes = [{
+  //     "id": 1,
+  //     "name": "Loading Recipes...Please wait...",
+  //     "servings": "",
+  //     "cookTime": "",
+  //     "instructions": "",
+  //     "ingredients": []
+  //   }]
+  //   } else {
+  //     loadingRecipes = sampleRecipes
+  // }
+  // console.log(loadingRecipes)
+  const [recipes, setRecipes] = useState(sampleRecipes)
   
   useEffect( () => {
     const fetchDataRecipes = () => {
-      return fetch(backendUrl+'/recipes')
+      return fetch(backendUrl+'/recipes', {
+        headers: {
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im13b25ndGVzdDAyIiwiaWF0IjoxNTk3OTUzMjM3LCJleHAiOjE2MDAxMTMyMzd9.8lvdIyocnxsCkNSyyXwazrsthEeRQL4HsJvGw4MjavY"
+        }
+      })
       .then( res => { console.log('res: ', res)
         return res.json()
       })
@@ -256,18 +274,5 @@ const sampleRecipes = [
   }
 ]
 
-let loadingRecipes = []
-if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){ 
-  loadingRecipes = [{
-    "id": 1,
-    "name": "Loading Recipes...Please wait...",
-    "servings": "",
-    "cookTime": "",
-    "instructions": "",
-    "ingredients": []
-  }]
-  } else {
-    loadingRecipes = sampleRecipes
-  }
-  
+
 export default App;

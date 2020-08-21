@@ -7,8 +7,12 @@ const usersSchema = new mongoose.Schema({
     username: {type: String, required: true},
     password: {type: String, required: true},
     updated: { type: Date, default: Date.now() },
-    country: { type: String, required: false },
-    email: { type: String, required: true}
+    country: { type: String, required: false, default: "" },
+    email: { type: String, required: true, default: ""},
+    familyMembers: [
+        {id: type: String, required: true}
+    ],
+    phoneNumber: {type: String, required: false, default: ""}
   
 })
 //export model(<name of Model constructor>, <schema data definition>, <collection to save to>)

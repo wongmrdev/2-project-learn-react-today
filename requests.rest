@@ -73,3 +73,51 @@ content-type: application/json
     "id": "14"
   }
 ###
+
+###
+POST http://localhost:5002/api/v1/users/create HTTP/1.1
+content-type: application/json
+
+{ "username": "matt1",
+  "password": "password1",
+  "email": "matthew.raymond.wong@gmail.com1" 
+}
+###
+DELETE http://localhost:5002/api/v1/users/delete HTTP/1.1
+content-type: application/json
+
+{
+    "email": "1matthew.raymond.wong@gmail.com"
+}
+###
+
+POST http://localhost:5002/api/v1/users/login HTTP/1.1
+content-type: application/json
+
+{ 
+  "password": "password1",
+  "email": "matthew.raymond.wong@gmail.com1" 
+}
+### without authorization
+GET http://localhost:5002/recipes HTTP/1.1
+content-type: application/json  
+
+###
+GET http://localhost:5002/recipes HTTP/1.1
+content-type: application/json  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im13b25ndGVzdDAyIiwiaWF0IjoxNTk3OTUzMjM3LCJleHAiOjE2MDAxMTMyMzd9.8lvdIyocnxsCkNSyyXwazrsthEeRQL4HsJvGw4MjavY
+ 
+###
+
+POST http://localhost:5002/api/v1/users/token HTTP/1.1
+content-type: application/json
+
+{ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibXdvbmd0ZXN0MDIiLCJpYXQiOjE1OTc4NDY0MjB9.Uwv3fME-jmIetU5Qw4XXyvM3MGl5n-6tBNKCDW1wxcE" }
+
+###
+
+DELETE http://localhost:5002/api/v1/users/logout HTTP/1.1
+content-type: application/json
+
+{ "username": "mwongtest02"}
+###
