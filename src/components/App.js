@@ -38,29 +38,7 @@ function App() {
   // }
   // console.log(loadingRecipes)
   const [recipes, setRecipes] = useState(sampleRecipes)
-  
-  useEffect( () => {
-    const fetchDataRecipes = () => {
-      return fetch(backendUrl+'/recipes', {
-        headers: {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im13b25ndGVzdDAyIiwiaWF0IjoxNTk3OTUzMjM3LCJleHAiOjE2MDAxMTMyMzd9.8lvdIyocnxsCkNSyyXwazrsthEeRQL4HsJvGw4MjavY"
-        }
-      })
-      .then( res => { console.log('res: ', res)
-        return res.json()
-      })
-      .then( receivedRecipes => { 
-        console.log('Received Recipes:', receivedRecipes)
-        setRecipes(receivedRecipes)
-        })
-      .catch(err => {})
-    }
 
-    fetchDataRecipes()
-  }, [])
-  
-  
-  
   //first array item is the State variable,
   //second array item (setRecipes) is the setState function to modify state (modify the variable)
   //React will auto-render the changed state of the State variable when the setState function is 
@@ -80,6 +58,7 @@ function App() {
     searchedRecipes,
     selectedRecipe,
     whichRecipe,
+    setRecipes,
     handleRecipeAdd, //same as handleRecipeAdd: handleRecipeAdd,
     handleRecipeDelete, //same as handleRecipeDelete: handleRecipeDelete
     handleRecipeSelect,

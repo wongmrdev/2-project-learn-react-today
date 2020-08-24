@@ -153,6 +153,16 @@ a.header__logout-icon {
 	font-size: clamp(1.25rem, calc(4.5vw - 11px), 2.25rem);
 }
 
+a.logout {
+	text-decoration: none;
+	display: inline-block;
+	margin: auto;
+}
+.logout {
+	margin: auto;
+	
+}
+
 @media only screen and (min-width: 900px) {
 	.app-header {
 		z-index: 1;

@@ -26,6 +26,7 @@ function Login() {
     }
     const response = () => {
       return fetch(`${backendUrl}/api/v1/users/login`, {
+        credentials: "include", 
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
@@ -35,8 +36,9 @@ function Login() {
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
+        localStorage.setItem("isLoggedIn", data.success)
         if(data.success === true) {
-          alert('login successful')
+          window.location.href = '/home'
           
 
           //window.location = '/'

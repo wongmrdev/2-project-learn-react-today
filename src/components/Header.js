@@ -5,6 +5,7 @@ import { RecipeContext } from './App'
 import { faSignInAlt, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import FRLogo from './FR-logo'
+import Logout from './login/Logout'
 
 export default function Header() {
 	const { handleRecipeAdd } = useContext(RecipeContext)
@@ -12,10 +13,10 @@ export default function Header() {
 	
 	return (
 		<div className="app-header">
-			<Link to="/" className="fr-logo">FR</Link>
+			<Link to="/home" className="fr-logo">FR</Link>
 					
 		    <RecipeSearchBar/>
-		    <Link to="/">
+		    <Link to="/home">
 				<button 
 					className="btn btn--header btn--primary btn--header__recipe-add"
 					onClick={handleRecipeAdd}>
@@ -26,12 +27,12 @@ export default function Header() {
 					<FontAwesomeIcon icon={faPlus}/> Recipe
 				</button>
 			</Link>
-			<Link to="/login">
+			{!localStorage.getItem("isLoggedIn") && <Link to="/login">
 				<div className="btn--header header__logout-icon">
 					<FontAwesomeIcon icon={faSignInAlt} />
 				</div>
-			</Link>
-			
+			</Link>}
+			{localStorage.getItem("isLoggedIn") && <Logout />}
 				
 			
 			

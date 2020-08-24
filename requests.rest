@@ -105,7 +105,7 @@ content-type: application/json
 ###
 GET http://localhost:5002/recipes HTTP/1.1
 content-type: application/json  
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im13b25ndGVzdDAyIiwiaWF0IjoxNTk3OTUzMjM3LCJleHAiOjE2MDAxMTMyMzd9.8lvdIyocnxsCkNSyyXwazrsthEeRQL4HsJvGw4MjavY
+# Cookie: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im13b25ndGVzdDAyIiwiaWF0IjoxNTk3OTUzMjM3LCJleHAiOjE2MDAxMTMyMzd9.8lvdIyocnxsCkNSyyXwazrsthEeRQL4HsJvGw4MjavY
  
 ###
 
