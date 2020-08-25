@@ -13,7 +13,7 @@ function Home() {
 
   useEffect( ()=> {
     async function handleGetRecipes () {
-      await fetch(backendUrl+'/recipes', {
+      fetch(backendUrl+'/recipes', {
         credentials: "include",
         headers: {
           
