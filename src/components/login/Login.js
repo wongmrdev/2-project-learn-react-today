@@ -38,7 +38,7 @@ function Login() {
         console.log('Success:', data);
         localStorage.setItem("isLoggedIn", data.success)
         if(data.success === true) {
-          window.location.href = '/home'
+          //window.location.href = '/home'
           
 
           //window.location = '/'
