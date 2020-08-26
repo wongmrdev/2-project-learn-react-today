@@ -8,5 +8,10 @@ if(process.env.NODE_ENV === 'development') {
 } else
 {backendUrl = 'http://localhost:5002' //process.env.BACKEND_URL
 }
+// if(process.env.NODE_ENV === 'development') {
+//     backendUrl = 'http://localhost:5002'
+// } else
+// {backendUrl = 'https://desolate-inlet-08825.herokuapp.com' //process.env.BACKEND_URL
+// }
 console.log(`backendURL ${backendUrl}`)
 export default backendUrl

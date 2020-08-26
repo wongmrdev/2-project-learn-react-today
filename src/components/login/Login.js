@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import '../../css/app.css'
 
 import backendUrl from '../../function-library/setBackendUrl'
+
 
 function Login() {
   const [loginPayload, setLoginPayload] = useState({
@@ -10,7 +11,7 @@ function Login() {
     password: '',
     email: ''
   })
-  const [loginResponse, setLoginResponse] = useState({})
+  const [isAuthenticated, setisAuthenticated] = useState(false)
 
   function handleChange(changes){
     setLoginPayload({...loginPayload, ...changes})
@@ -38,14 +39,15 @@ function Login() {
         console.log('Success:', data);
         localStorage.setItem("isLoggedIn", data.success)
         if(data.success === true) {
-          //window.location.href = '/home'
+          setisAuthenticated(true) 
+         
           
 
           //window.location = '/'
         } else { alert(`registration failed: ${data.message}`)}
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error('Error:', error); 
       });
      
     }
@@ -55,6 +57,8 @@ function Login() {
   }
 
      return (
+      !isAuthenticated ? (
+
         <div className="loginForm">
           <h1>Login</h1>
           <form>
@@ -73,9 +77,8 @@ function Login() {
           <div className="not-registered">Not Registered?</div>
           </Link>
 
-
-
         </div>
+      ) : <Redirect to='/home'/>
       )
 }
 
