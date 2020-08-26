@@ -16,9 +16,6 @@ function Home() {
       console.log(backendUrl)
       fetch(backendUrl+'/recipes', {
         credentials: "include",
-        headers: {
-          
-        }
       })
       .then( res => { console.log('res: ', res)
         return res.json()
