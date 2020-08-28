@@ -27,19 +27,20 @@
     "react-dom": "^16.13.1",
     "react-query": "^2.5.6",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "^3.4.3",
+    "serve": "^11.3.2"
   },
   "scripts": {
     "devStart": "nodemon server.js",
     "devStartAuth": "nodemon authServer.js",
     "devStartLogin": "nodemon authServerLogin.js",
     "devStartRecipeServer": "nodemon ./services/recipesServer",
-    "start": "react-scripts start",
+    "dev": "react-scripts start"
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"npm run devStartRecipeServer\" \"npm run start\" \"npm run devStartAuth\" \"npm run devStartLogin\"",
-    
+    "devWithServer": "concurrently \"npm run devStartRecipeServer\" \"npm run dev\" \"npm run devStartAuth\" \"npm run devStartLogin\"",
     "postinstall": "react-scripts build"
   },
   "eslintConfig": {
@@ -59,5 +60,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-    }
+  }
 }

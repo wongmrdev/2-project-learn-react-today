@@ -8,6 +8,8 @@
 # testing
 /coverage
 scratchpad
+authServer.js
+authServerLogin.js
 
 # production
 /build
