@@ -140,28 +140,28 @@ a.fr-logo {
 	font-size: clamp(.5rem, calc(4.5vw - 1rem), 1.25rem);
 }
 
-a.header__logout-icon {
+a.header__login-logout-icon  {
 	position: relative;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	vertical-align: middle;
 }
-.btn--header.header__logout-icon {
+.btn--header.header__login-logout-icon {
 	margin-left: clamp(5px,(5px+1vw),10px);
 	max-height: 100%;
 	font-size: clamp(1.25rem, calc(4.5vw - 11px), 2.25rem);
 }
 
-a.logout {
+a.login-logout {
 	text-decoration: none;
-	display: inline-block;
-	margin: auto;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	vertical-align: middle;
 }
-.logout {
-	margin: auto;
-	
-}
+
 
 @media only screen and (min-width: 900px) {
 	.app-header {

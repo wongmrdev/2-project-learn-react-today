@@ -8,9 +8,12 @@ import RecipeAuthorEdit from './RecipeAuthorEdit'
 //import icons 
 import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import user-functions, global variables
-import backendUrl from '../function-library/setBackendUrl'
 
+
+//import user-functins, global variabloes
+import {setBackendUrl} from '../config.js'
+
+let backendUrl = setBackendUrl()
 export default function RecipeEdit({recipe}) {
 	const { handleRecipeChange,
 		handleRecipeSelect,
@@ -21,19 +24,8 @@ export default function RecipeEdit({recipe}) {
 			recipe.authors = [{id: uuidv4(), name: "", email: ""}]
 		} 
 	console.log("recipeEdit recipe.authors:", recipe.authors)
-	
-	
-
-		
-	
-		// recipe.historicalAuthor === undefined ? handleChange({historicalAuthor: ""})  : 
-		// recipe.originCountry === undefined ? handleChange({originCountry: ""}) : 
-		// recipe.originWorldRegion === undefined ? handleChange({originWorldRegion: ""}) :
-	
-
 	console.log('RecipeEdit Rendered')
 	
-
 	function handleChange(changes) {
 		handleRecipeChange(recipe.id, {...recipe, ...changes })
 	}

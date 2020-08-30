@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import '../../css/app.css'
-import backendUrl from '../../function-library/setBackendUrl'
+import {setBackendUrl} from '../../config.js'
+import crypto  from 'crypto'
 
+//From .env or heroku config variables
+let backendUrl = setBackendUrl()
 
 function Registration() {
-  const [registrationPayload, setRegistrationPayload] = useState({
+  const [registrationForm, setRegistrationForm] = useState({
     username: '',
     email: '',
     password: '',
@@ -13,21 +16,28 @@ function Registration() {
   })
 
   function handleChange(changes){
-    setRegistrationPayload({...registrationPayload, ...changes})
+    setRegistrationForm({...registrationForm, ...changes})
   }
 
+  function hashPassword(email, password) {
+    let hash = crypto.createHash('sha256');
+    hash.update(email+password);
+    let hashedPassword = hash.digest('hex')
+    return hashedPassword
+  }
   function handleRegistrationFormSubmit(event) {
     
     console.log(`backendurl: ${backendUrl}`)
 
     //check the data
-    if(registrationPayload.email ==='' || registrationPayload.username === '') {
+    if(registrationForm.email ==='' || registrationForm.username === '') {
       return alert('username and email is required')
-    } else if (registrationPayload.password === '' || registrationPayload.verifyPassword === '') {
+    } else if (registrationForm.password === '' || registrationForm.verifyPassword === '') {
       return alert('password is required')
-    } else if (registrationPayload.password !== registrationPayload.verifyPassword) {
+    } else if (registrationForm.password !== registrationForm.verifyPassword) {
       return alert("passwords don't match")
-    }
+    } 
+    let registrationPayload = { username: registrationForm.username, email: registrationForm.email, password: hashPassword(registrationForm.email, registrationForm.verifyPassword) }
       fetch(`${backendUrl}/api/v1/users/create`, {
         method: 'POST', // or 'PUT'
         headers: {
@@ -54,7 +64,7 @@ function Registration() {
   }
 
   function forceLower(){
-    setRegistrationPayload({...registrationPayload, username: registrationPayload.username.toLowerCase()})
+    setRegistrationForm({...registrationForm, username: registrationForm.username.toLowerCase()})
   }
      return (
         <div className="loginForm">
@@ -66,7 +76,7 @@ function Registration() {
             placeholder="Enter username" 
             name="username"
             className="registration__input"
-            value={registrationPayload.username}
+            value={registrationForm.username}
             onKeyUp={()=>forceLower()}
             onChange= { event => handleChange({username: event.target.value})}></input>
             
@@ -75,7 +85,7 @@ function Registration() {
             placeholder="Enter email" 
             name="email"
             className="registration__input"
-            value={registrationPayload.email}
+            value={registrationForm.email}
             onChange= { event => handleChange({email: event.target.value})}></input>
             
             <input 
@@ -83,7 +93,7 @@ function Registration() {
             placeholder="Enter password" 
             name="password"
             className="registration__input"
-            value={registrationPayload.password}
+            value={registrationForm.password}
             onChange = {event => handleChange({password: event.target.value})}></input>
             
             <input 
@@ -91,7 +101,7 @@ function Registration() {
             placeholder="Re-enter password"  
             name="verifyPassword"
             className="registration__input"
-            value={registrationPayload.verifyPassword}
+            value={registrationForm.verifyPassword}
             onChange={ event => handleChange({verifyPassword: event.target.value})}></input>
             
             <div><button className="btn btn--primary btn--submit" onClick={(event)=>handleRegistrationFormSubmit(event)}>Submit</button></div>

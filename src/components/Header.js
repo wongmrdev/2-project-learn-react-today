@@ -28,7 +28,7 @@ export default function Header() {
 				</button>
 			</Link>
 			{!localStorage.getItem("isLoggedIn") && <Link to="/login">
-				<div className="btn--header header__logout-icon">
+				<div className="btn--header header__login-logout-icon">
 					<FontAwesomeIcon icon={faSignInAlt} />
 				</div>
 			</Link>}

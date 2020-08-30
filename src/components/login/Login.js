@@ -1,28 +1,39 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import crypto  from 'crypto'
 import '../../css/app.css'
-
-import backendUrl from '../../function-library/setBackendUrl'
-
+import {setBackendUrl} from '../../config.js'
 
 function Login() {
-  const [loginPayload, setLoginPayload] = useState({
-    username: '',
-    password: '',
-    email: ''
+  let backendUrl = setBackendUrl()
+  
+  function hashPassword(email, password) {
+    let hash = crypto.createHash('sha256');
+    hash.update(email+password);
+    let hashedPassword = hash.digest('hex')
+    return hashedPassword
+  }
+ 
+
+  const [loginForm, setloginForm] = useState({
+    email: '',
+    password: ''
+    
   })
   const [isAuthenticated, setisAuthenticated] = useState(false)
-
+  
   function handleChange(changes){
-    setLoginPayload({...loginPayload, ...changes})
+    setloginForm({...loginForm, ...changes})
   }
+
   async function handleLoginFormSubmit(event) {
     console.log(`backendurl: ${backendUrl}`)
-
+   
+    
     //check the data
-    if(loginPayload.email ==='') {
+    if(loginForm.email ==='') {
       return alert('email is required')
-    } else if (loginPayload.password === '') {
+    } else if (loginForm.password === '') {
       return alert('password is required')
     }
     const response = () => {
@@ -32,7 +43,7 @@ function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(loginPayload),
+        body: JSON.stringify({...loginForm, password: hashPassword(loginForm.email, loginForm.password)}),
       })
       .then(response => response.json())
       .then(data => {

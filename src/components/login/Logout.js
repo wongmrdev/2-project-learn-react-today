@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function Logout() {
         const handleClick = () => {
         localStorage.removeItem("isLoggedIn")
@@ -16,8 +19,8 @@ export default function Logout() {
 
         return (
                  <Link  to="/login">
-                        <div onClick={handleClick} className="logout" >
-                                Logout
+                        <div onClick={handleClick} className="btn--header header__login-logout-icon" >
+                                <FontAwesomeIcon icon={faSignOutAlt} />
                         </div>
                 </Link>
         )

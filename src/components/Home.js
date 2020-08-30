@@ -3,7 +3,8 @@ import RecipeList from './RecipeList'
 import '../css/app.css'
 import RecipeEdit from './RecipeEdit'
 import { RecipeContext } from './App'
-import backendUrl from '../function-library/setBackendUrl'
+import {setBackendUrl} from '../config.js'
+let backendUrl = setBackendUrl()
 
 function Home() {
   const {

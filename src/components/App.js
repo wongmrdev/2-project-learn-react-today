@@ -10,6 +10,10 @@ import filterRecipeList from '../function-library/filterRecipeList'
 import backendUrl from '../function-library/setBackendUrl'
 //import css
 import '../css/app.css'
+//for local and development builds use .env
+if(process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 //start app logic
 
