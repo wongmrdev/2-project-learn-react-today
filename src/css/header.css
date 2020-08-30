@@ -4,8 +4,8 @@
 	align-items: stretch;
 	column-gap: 2px;
 	height: 4.5vw;
-	min-height: 1.5rem;
-	max-height: 2.5rem;
+	min-height: 2.5rem;
+	max-height: 4rem;
 	background: #FD5353;
 	color: white;
 	width: 100%;

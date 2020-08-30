@@ -20,7 +20,7 @@ function Login() {
     password: ''
     
   })
-  const [isAuthenticated, setisAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   
   function handleChange(changes){
     setloginForm({...loginForm, ...changes})
@@ -50,7 +50,7 @@ function Login() {
         console.log('Success:', data);
         localStorage.setItem("isLoggedIn", data.success)
         if(data.success === true) {
-          setisAuthenticated(true) 
+          setIsAuthenticated(true) 
          
           
 

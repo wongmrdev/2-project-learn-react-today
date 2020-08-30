@@ -13,7 +13,7 @@
 }
 
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1000px) {
 
   .recipe-list {
     border-right: 1px solid black;

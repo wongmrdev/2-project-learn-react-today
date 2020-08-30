@@ -9,7 +9,7 @@
 
 .recipe__header {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: 10fr 1fr 	;
 	grid-template-rows: auto;	
 	justify-content: space-between;
 	align-items: center;
@@ -18,6 +18,7 @@
 
 .recipe__header__button-container {
 	width: 100%;
+	justify-items: stretch;
 	
 }
 
@@ -54,12 +55,12 @@
 	background-color: #ffffff;
 	color: #444444;
 	cursor: pointer;
-	padding: 18px;
+	padding: .5rem 1rem;
 	width: 100%;
 	border: none;
 	text-align: left;
 	outline: none;
-	font-size: 15px;
+	font-size: inherit;
 }
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsible:hover {
@@ -103,7 +104,7 @@ max-height: 0px;
 		}
 	}
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 800px) {
 	.recipe {
 		border-bottom: 1px solid black;
 	
@@ -116,7 +117,7 @@ max-height: 0px;
 	}
 	.recipe__header {
 		display: grid;
-		grid-template-columns: auto auto ;
+		grid-template-columns: 3fr 1fr ;
 		grid-template-rows: auto;	
 		justify-content: space-between;
 		align-items: center;
@@ -162,12 +163,12 @@ max-height: 0px;
 		background-color: #ffffff;
 		color: #444444;
 		cursor: pointer;
-		padding: 18px;
+		padding: 10px;
 		width: 100%;
 		border: none;
 		text-align: left;
 		outline: none;
-		font-size: 15px;
+		font-size: .9rem;
 	}
 	/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 	.active, .collapsible:hover {
@@ -210,4 +211,23 @@ max-height: 0px;
 				max-height:15000px;
 			}
 		}
+}
+
+@media only screen and (min-width: 1000px) {
+	
+	.recipe__header {
+		display: grid;
+		grid-template-columns: 1fr 210px ;
+		grid-template-rows: auto;	
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0px;
+	
+	}
+
+	.collapsible {
+		
+		padding: 16px;
+		
+	}
 }

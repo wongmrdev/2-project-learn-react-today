@@ -7,7 +7,7 @@ import Routes from './Routes';
 //import icons 
 //import user-functions, global variables
 import filterRecipeList from '../function-library/filterRecipeList'
-import backendUrl from '../function-library/setBackendUrl'
+import {setBackendUrl} from '../config.js'
 //import css
 import '../css/app.css'
 //for local and development builds use .env
@@ -16,7 +16,7 @@ if(process.env.NODE_ENV !== 'production') {
 }
 
 //start app logic
-
+let backendUrl = setBackendUrl()
 export const RecipeContext = React.createContext() //allow global access of variables and functions, 
 //must add Context Wrapper Provider with prop of the objects or functions to make global 
 //<RecipeContext.Provider value={recipeContextValue}></RecipeContext.Provider>
