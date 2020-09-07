@@ -16,11 +16,8 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bcrypt": "^5.0.0",
-    "concurrently": "^5.3.0",
     "crypto": "^1.0.1",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "faker": "^4.1.0",
     "fuse.js": "^6.4.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.2",
@@ -60,6 +57,8 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
     "nodemon": "^2.0.4"
   }
 }

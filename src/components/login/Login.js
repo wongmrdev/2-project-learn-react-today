@@ -14,10 +14,11 @@ function Login() {
     return hashedPassword
   }
  
-
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [loginForm, setloginForm] = useState({
     email: '',
     password: ''
+
     
   })
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -27,6 +28,7 @@ function Login() {
   }
 
   async function handleLoginFormSubmit(event) {
+    setIsSubmitting(true)
     console.log(`backendurl: ${backendUrl}`)
    
     
@@ -50,11 +52,7 @@ function Login() {
         console.log('Success:', data);
         localStorage.setItem("isLoggedIn", data.success)
         if(data.success === true) {
-          setIsAuthenticated(true) 
-         
-          
-
-          //window.location = '/'
+          setIsAuthenticated(true)
         } else { alert(`registration failed: ${data.message}`)}
       })
       .catch((error) => {
@@ -63,7 +61,7 @@ function Login() {
      
     }
     response()
-
+    setIsSubmitting(false)
     event.preventDefault()
   }
 
@@ -72,16 +70,35 @@ function Login() {
 
         <div className="loginForm">
           <h1>Login</h1>
-          <form>
+          <form onSubmit={(event)=>handleLoginFormSubmit(event)}>
             <div></div>
             <label htmlFor="email"></label>
-            <input type="email" placeholder="Enter Email" name="email"
-            onChange= { event => handleChange({email: event.target.value})}></input>
+            <input 
+              type="email" 
+              placeholder="Enter Email" 
+              name="email" 
+              required
+              value={loginForm.email}
+              onChange= { event => handleChange({email: event.target.value})}
+            />
             <div></div>
             <label htmlFor="password"></label>
-            <input type="password" placeholder="Enter Password" name="password"
-            onChange= { event => handleChange({password: event.target.value})}></input>
-            <div><button className="btn btn--primary btn--submit" onClick={(event)=>handleLoginFormSubmit(event)}>Login</button></div>
+            <input 
+              type="password" 
+              placeholder="Enter Password" 
+              name="password" 
+              required
+              value={loginForm.password}
+              onChange= { event => handleChange({password: event.target.value})}
+            />
+            <div>
+            <button 
+              type="submit"
+              className="btn btn--primary btn--submit" 
+              disabled={isSubmitting}>
+                Login
+            </button>
+            </div>
          
           </form> 
           <Link to="/registration">

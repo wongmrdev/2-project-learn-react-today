@@ -95,8 +95,8 @@ POST http://localhost:5002/api/v1/users/login HTTP/1.1
 content-type: application/json
 
 { 
-  "password": "password1",
-  "email": "matthew.raymond.wong@gmail.com1" 
+  "password": "$2b$10$md1pQfuaRXSvGrqh9CaF4uOoOJOj/Sj/POgiI.lejRu9CE41oSgqO",
+  "email": "hello_molly@hotmail.com" 
 }
 ### without authorization
 GET http://localhost:5002/recipes HTTP/1.1
@@ -120,4 +120,23 @@ DELETE http://localhost:5002/api/v1/users/logout HTTP/1.1
 content-type: application/json
 
 { "username": "mwongtest02"}
+###
+
+
+POST http://localhost:5002/api/v1/users/verify-email HTTP/1.1
+content-type: application/json
+
+{ "username": "mwongtest02",
+  "email": "matthew.raymond.wong@gmail.com",
+  "message": "test msg"
+}
+###
+
+POST http://localhost:5003/send-email-verification-code HTTP/1.1
+content-type: application/json
+
+{ "username": "mwongtest02",
+  "email": "matthew.raymond.wong@gmail.com",
+  "message": "test msg"
+}
 ###

@@ -76,7 +76,8 @@ export default function RecipeEdit({recipe}) {
 	
 	function handleRecipeSubmit() {
 		fetch(backendUrl+'/recipe-upsert', {
-		method: 'POST', // or 'PUT'
+		method: 'POST', // or 'PUT',
+		credentials: "include",
 		headers: {
 			'Content-Type': 'application/json',
 		},
