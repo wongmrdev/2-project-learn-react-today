@@ -24,12 +24,12 @@ export default function Header() {
 					<span></span>
 					<span></span>
 					<span></span>
-					<FontAwesomeIcon icon={faPlus}/> Recipe
+					<FontAwesomeIcon title="add recipe" icon={faPlus}/> Recipe
 				</button>
 			</Link>
 			{!localStorage.getItem("isLoggedIn") && <Link to="/login">
 				<div className="btn--header header__login-logout-icon">
-					<FontAwesomeIcon icon={faSignInAlt} />
+					<FontAwesomeIcon title="login" icon={faSignInAlt} />
 				</div>
 			</Link>}
 			{localStorage.getItem("isLoggedIn") && <Logout />}

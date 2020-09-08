@@ -13,7 +13,7 @@ function Login() {
     let hashedPassword = hash.digest('hex')
     return hashedPassword
   }
- 
+  const [errorMessage, setErrorMessage] = useState()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [loginForm, setloginForm] = useState({
     email: '',
@@ -53,10 +53,14 @@ function Login() {
         localStorage.setItem("isLoggedIn", data.success)
         if(data.success === true) {
           setIsAuthenticated(true)
-        } else { alert(`registration failed: ${data.message}`)}
+          
+        } else { 
+          setErrorMessage(data.message)
+        }
       })
       .catch((error) => {
         console.error('Error:', error); 
+        alert("something went wrong with login code")
       });
      
     }
@@ -67,9 +71,10 @@ function Login() {
 
      return (
       !isAuthenticated ? (
-
+        
         <div className="loginForm">
           <h1>Login</h1>
+          {errorMessage && <h3 className="errorMessage">{errorMessage}</h3>}
           <form onSubmit={(event)=>handleLoginFormSubmit(event)}>
             <div></div>
             <label htmlFor="email"></label>
@@ -106,8 +111,8 @@ function Login() {
           </Link>
 
         </div>
-      ) : <Redirect to='/home'/>
-      )
+        ) : <Redirect to='/home'/>
+    )
 }
 
 

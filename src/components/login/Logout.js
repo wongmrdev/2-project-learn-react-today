@@ -20,7 +20,7 @@ export default function Logout() {
         return (
                  <Link  to="/login">
                         <div onClick={handleClick} className="btn--header header__login-logout-icon" >
-                                <FontAwesomeIcon icon={faSignOutAlt} />
+                                <FontAwesomeIcon title="logout" icon={faSignOutAlt} />  {/*title prop will be alt-text on hover*/}
                         </div>
                 </Link>
         )

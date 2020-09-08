@@ -40,7 +40,7 @@
 	align-items: center;
 	transition: 0.2s;
 	overflow: hidden;
-
+	font-size: clamp(.75rem, calc(4.5vw - 1rem), 1.25rem);
 	margin: 2px;
 	
 
@@ -117,6 +117,7 @@ button.btn--danger:active{
 	align-items: center;
 	transition: 0.2s;
 	overflow: hidden;
+	font-size: clamp(.75rem, calc(4.5vw - 1rem), 1.25rem);
 }
 
 .btn--danger:hover {

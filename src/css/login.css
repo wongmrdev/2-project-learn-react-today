@@ -40,3 +40,7 @@ input::placeholder {
 .btn--submit {
     width: 90%;
 }
+
+h3.errorMessage {
+    color: red
+}

@@ -11,6 +11,9 @@
 	display: grid;
 	grid-template-columns: 10fr 1fr 	;
 	grid-template-rows: auto;	
+	grid-template-areas: 
+		"title buttons" 
+		"author buttons";
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 0px;
@@ -19,6 +22,7 @@
 .recipe__header__button-container {
 	width: 100%;
 	justify-items: stretch;
+	grid-area: buttons
 	
 }
 
@@ -26,6 +30,12 @@
 	margin: 0;
 	font-size: 1rem;
 	font-weight: 700;
+	grid-area: title
+}
+
+.first-author {
+	grid-area: author;
+	margin: 0;
 }
 
 .recipe__row {

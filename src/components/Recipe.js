@@ -29,6 +29,7 @@ export default function Recipe(props) {
     isActive ? toggleActiveClass(false) : toggleActiveClass(true)
   }
   
+  if(authors[0]) console.log(authors[0].name)
   
   return (
     <>
@@ -38,6 +39,7 @@ export default function Recipe(props) {
       <div className="recipe">
         <div className={"recipe__header collapsible " + activeClass} onClick={(e)=>handleToggleActiveClass(e)}>
           <h3 className="recipe__title ">{name}</h3>
+          <p className="first-author">{authors[0] ? authors[0].name : "anon"}</p>
           <div className="recipe__header__button-container">
             <button 
             className="btn btn--primary mr-1 pulse-button-hover"
