@@ -33,7 +33,7 @@
 	color: black;
 	/* background-color: hsl(0,100%,50%); */
 	border-radius: 25px;
-	padding: 5px;
+	padding: 1px;
 	outline: none;
 	font-size: 1.25rem;
 
@@ -107,11 +107,12 @@ textarea.recipe-edit__input {
 	text-align: center;
 
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1000px) {
 	.recipe-edit {
 		position: fixed;
 		right: 0;
-		top: 6.5vh;
+		top: clamp(2.5rem, 5vw, 3rem);
+
 		width: 50%;
 		max-height: 100%;
 		overflow-y: auto;

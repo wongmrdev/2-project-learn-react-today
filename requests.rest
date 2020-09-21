@@ -126,17 +126,19 @@ content-type: application/json
 POST http://localhost:5002/api/v1/users/verify-email HTTP/1.1
 content-type: application/json
 
-{ "username": "mwongtest02",
-  "email": "matthew.raymond.wong@gmail.com",
-  "message": "test msg"
+{ 
+  "username": "mwong02",
+  "email": "matthew.raymond.wong@gmail.com"
 }
 ###
 
-POST http://localhost:5003/send-email-verification-code HTTP/1.1
+POST http://localhost:5002/api/v1/users/verification-code HTTP/1.1
 content-type: application/json
+Cookie: access_token=Bearer%20eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im13b25nMDIiLCJpYXQiOjE2MDA1MDEzODgsImV4cCI6MTYwMjY2MTM4OH0.07KZ2Thuf3qNeyNLxsgesouih7Xa37UbQXis403slW4
 
 { "username": "mwongtest02",
   "email": "matthew.raymond.wong@gmail.com",
-  "message": "test msg"
+  "message": "enter your verification code on next logon within 1 hour",
+  "verificationCode": "738619"
 }
 ###

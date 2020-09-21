@@ -9,7 +9,7 @@
 .loginForm h1 {
     font-size: max(1.5rem,3vw);
 }
-.loginForm input {
+.loginForm input{
     border-radius: 25px;
     border-color: hsl(0, 98%, 70%);
     background: none;
@@ -17,6 +17,10 @@
     height: 4.5vh;
     padding: 1vh;
     margin: .5vh;
+}
+
+.loginForm a {
+    
 }
 .loginForm input:hover {
     border-color: hsl(0, 98%, 50%);
@@ -40,6 +44,11 @@ input::placeholder {
 .btn--submit {
     width: 90%;
 }
+
+.btn--cancel {
+    width: 90%;
+}
+
 
 h3.errorMessage {
     color: red

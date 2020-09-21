@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import crypto  from 'crypto'
 import '../../css/app.css'
 import {setBackendUrl} from '../../config.js'
+import { RecipeContext } from '../App'
 
 function Login() {
   let backendUrl = setBackendUrl()
-  
+  const {
+          isAuthenticated,
+          setIsAuthenticated
+        } = useContext(RecipeContext)
   function hashPassword(email, password) {
     let hash = crypto.createHash('sha256');
     hash.update(email+password);
@@ -18,16 +22,13 @@ function Login() {
   const [loginForm, setloginForm] = useState({
     email: '',
     password: ''
-
-    
   })
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  
+  const [redirect, setRedirect] = useState('')
   function handleChange(changes){
     setloginForm({...loginForm, ...changes})
   }
 
-  async function handleLoginFormSubmit(event) {
+   function handleLoginFormSubmit(event) {
     setIsSubmitting(true)
     console.log(`backendurl: ${backendUrl}`)
    
@@ -38,8 +39,8 @@ function Login() {
     } else if (loginForm.password === '') {
       return alert('password is required')
     }
-    const response = () => {
-      return fetch(`${backendUrl}/api/v1/users/login`, {
+    const response = async () => {
+      return  fetch(`${backendUrl}/api/v1/users/login`, {
         credentials: "include", 
         method: 'POST', // or 'PUT'
         headers: {
@@ -49,12 +50,21 @@ function Login() {
       })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
-        localStorage.setItem("isLoggedIn", data.success)
-        if(data.success === true) {
+        if(data.success === false && data.redirect.email !== null && data.redirect.location !== null) {
+           //redirect to verify-email and send the request to the email server to send email to client's email
+           console.log("failure: ", data)
+           requestEmailVerificationCodeFromServer(data.redirect)
+           setIsAuthenticated(false)
+           setRedirect(data.redirect.location.pathname)
+           alert(`redirect to ${data.redirect.location.pathname}, ${data.message}`)
+        } else if(data.success === true) {
+        //Auth cookie will be set (httpOnly) only if data.success === true, we can now make requests back to the server with the cookie
           setIsAuthenticated(true)
-          
-        } else { 
+          console.log('Success:', data);
+        } 
+        else { 
+          setIsAuthenticated(false)
+          setRedirect('')
           setErrorMessage(data.message)
         }
       })
@@ -69,8 +79,31 @@ function Login() {
     event.preventDefault()
   }
 
+  //if email is not verified, send email to user
+  async function requestEmailVerificationCodeFromServer(redirect) {
+     fetch(backendUrl+'/api/v1/users/verify-email',
+    {
+      credentials: "include", 
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email: redirect.email}),
+    }).then( res => { 
+      console.log('verify-email res: ', res.json())
+    }).then(() => {
+      console.log("Verification Code sent to your email on file")
+    }).catch(
+      err => {console.log(err)}
+    )  
+  }
+
+  useEffect(() => console.log("redirect:",  redirect),[redirect])
+
      return (
-      !isAuthenticated ? (
+      
+      (isAuthenticated && redirect === '') ?  <Redirect to='/home'/> 
+      : (!isAuthenticated && redirect) ? <Redirect to={{pathname: redirect, state: {email: loginForm.email}}}/> : (
         
         <div className="loginForm">
           <h1>Login</h1>
@@ -111,7 +144,8 @@ function Login() {
           </Link>
 
         </div>
-        ) : <Redirect to='/home'/>
+        )
+      
     )
 }
 

@@ -26,6 +26,8 @@ export const RecipeContext = React.createContext() //allow global access of vari
 // Requires useContext Hook 
 
 function App() {
+  
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   //start of recipes
   // let loadingRecipes 
   // if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){ 
@@ -41,6 +43,7 @@ function App() {
   //     loadingRecipes = sampleRecipes
   // }
   // console.log(loadingRecipes)
+  
   const [recipes, setRecipes] = useState(sampleRecipes)
 
   //first array item is the State variable,
@@ -57,11 +60,13 @@ function App() {
   else {whichRecipe = searchedRecipes}
     
   const recipeContextValue = {
+    isAuthenticated,
     recipes,
     activeRecipeListName,
     searchedRecipes,
     selectedRecipe,
     whichRecipe,
+    setIsAuthenticated,
     setRecipes,
     handleRecipeAdd, //same as handleRecipeAdd: handleRecipeAdd,
     handleRecipeDelete, //same as handleRecipeDelete: handleRecipeDelete
