@@ -28,7 +28,7 @@ function Login() {
     setloginForm({...loginForm, ...changes})
   }
 
-   function handleLoginFormSubmit(event) {
+  function handleLoginFormSubmit(event) {
     setIsSubmitting(true)
     console.log(`backendurl: ${backendUrl}`)
    
@@ -70,6 +70,7 @@ function Login() {
       })
       .catch((error) => {
         console.error('Error:', error); 
+        setIsAuthenticated(false)
         alert("something went wrong with login code")
       });
      
