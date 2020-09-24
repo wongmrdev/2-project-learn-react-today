@@ -50,6 +50,7 @@ function Login() {
       })
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         if(data.success === false && data.hasOwnProperty("redirect") && data.redirect.hasOwnProperty("location") && data.redirect.hasOwnProperty("email") && data.redirect.email !== null && data.redirect.location !== null) {
            //redirect to verify-email and send the request to the email server to send email to client's email
            console.log("failure: ", data)
