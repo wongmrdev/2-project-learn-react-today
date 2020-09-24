@@ -71,7 +71,7 @@ function Login() {
       })
       .catch((error) => {
         console.error('Error:', error); 
-        setIsAuthenticated(false)
+        //setIsAuthenticated(false)
         alert("something went wrong with login code")
       });
      
