@@ -40,7 +40,7 @@ function Login() {
       return alert('password is required')
     }
     const response = async () => {
-      return  fetch(`${backendUrl}/api/v1/users/login`, {
+      return  await fetch(`${backendUrl}/api/v1/users/login`, {
         credentials: "include", 
         method: 'POST', // or 'PUT'
         headers: {
