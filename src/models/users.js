@@ -10,9 +10,13 @@ const usersSchema = new mongoose.Schema({
     country: { type: String, required: false, default: "" },
     email: { type: String, required: true, default: ""},
     familyMembers: [
-        {id: type: String, required: true}
+        {type: String, required: false}
     ],
-    phoneNumber: {type: String, required: false, default: ""}
+    phoneNumber: {type: String, required: false, default: ""},
+    verified: {
+        email: {type: Boolean, required: true, default: false}, 
+        phone: {type: Boolean, required: true, default: false}
+    }
   
 })
 //export model(<name of Model constructor>, <schema data definition>, <collection to save to>)

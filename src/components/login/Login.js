@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import crypto  from 'crypto'
+// import crypto  from 'crypto'
 import '../../css/app.css'
 import {setBackendUrl} from '../../config.js'
 import { RecipeContext } from '../App'
@@ -11,12 +11,12 @@ function Login() {
           isAuthenticated,
           setIsAuthenticated
         } = useContext(RecipeContext)
-  function hashPassword(email, password) {
-    let hash = crypto.createHash('sha256');
-    hash.update(email+password);
-    let hashedPassword = hash.digest('hex')
-    return hashedPassword
-  }
+  // function hashPassword(email, password) {
+  //   let hash = crypto.createHash('sha256');
+  //   hash.update(email+password);
+  //   let hashedPassword = hash.digest('hex')
+  //   return hashedPassword
+  // }
   const [errorMessage, setErrorMessage] = useState()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [loginForm, setloginForm] = useState({
@@ -46,11 +46,11 @@ function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({...loginForm, password: hashPassword(loginForm.email, loginForm.password)}),
+        body: JSON.stringify({...loginForm}),
       })
       .then(response => response.json())
       .then(data => {
-        if(data.success === false && data.redirect.email !== null && data.redirect.location !== null) {
+        if(data.success === false && data.hasOwnProperty("redirect") && data.redirect.hasOwnProperty("location") && data.redirect.hasOwnProperty("email") && data.redirect.email !== null && data.redirect.location !== null) {
            //redirect to verify-email and send the request to the email server to send email to client's email
            console.log("failure: ", data)
            requestEmailVerificationCodeFromServer(data.redirect)

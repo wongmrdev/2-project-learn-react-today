@@ -107,7 +107,7 @@ textarea.recipe-edit__input {
 	text-align: center;
 
 }
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1400px) {
 	.recipe-edit {
 		position: fixed;
 		right: 0;

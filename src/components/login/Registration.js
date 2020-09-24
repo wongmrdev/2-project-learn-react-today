@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import '../../css/app.css'
 import {setBackendUrl} from '../../config.js'
-import crypto  from 'crypto'
+// import crypto  from 'crypto'
 
 //From .env or heroku config variables
 let backendUrl = setBackendUrl()
@@ -19,12 +19,12 @@ function Registration() {
     setRegistrationForm({...registrationForm, ...changes})
   }
 
-  function hashPassword(email, password) {
-    let hash = crypto.createHash('sha256');
-    hash.update(email+password);
-    let hashedPassword = hash.digest('hex')
-    return hashedPassword
-  }
+  // function hashPassword(email, password) {
+  //   let hash = crypto.createHash('sha256');
+  //   hash.update(email+password);
+  //   let hashedPassword = hash.digest('hex')
+  //   return hashedPassword
+  // }
   function handleRegistrationFormSubmit(event) {
     
     console.log(`backendurl: ${backendUrl}`)
@@ -37,7 +37,7 @@ function Registration() {
     } else if (registrationForm.password !== registrationForm.verifyPassword) {
       return alert("passwords don't match")
     } 
-    let registrationPayload = { username: registrationForm.username, email: registrationForm.email, password: hashPassword(registrationForm.email, registrationForm.verifyPassword) }
+    let registrationPayload = { username: registrationForm.username, email: registrationForm.email, password: registrationForm.verifyPassword }
       fetch(`${backendUrl}/api/v1/users/create`, {
         method: 'POST', // or 'PUT'
         headers: {
