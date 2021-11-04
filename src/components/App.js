@@ -28,6 +28,7 @@ export const RecipeContext = React.createContext() //allow global access of vari
 function App() {
   
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [redirect, setRedirect] = useState('')
   //start of recipes
   // let loadingRecipes 
   // if(process.NODE_ENV === 'production' || process.env.NODE_ENV === 'development'){ 
@@ -61,12 +62,14 @@ function App() {
     
   const recipeContextValue = {
     isAuthenticated,
+    redirect,
     recipes,
     activeRecipeListName,
     searchedRecipes,
     selectedRecipe,
     whichRecipe,
     setIsAuthenticated,
+    setRedirect,
     setRecipes,
     handleRecipeAdd, //same as handleRecipeAdd: handleRecipeAdd,
     handleRecipeDelete, //same as handleRecipeDelete: handleRecipeDelete

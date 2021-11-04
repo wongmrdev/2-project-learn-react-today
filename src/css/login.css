@@ -1,55 +1,53 @@
 .loginForm {
-    display: block;
-    justify-content: space-around;
-    align-content: center;
-    margin: auto;
-    width: 90%;
-    text-align: center;
+  display: block;
+  justify-content: space-around;
+  align-content: center;
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  max-width: 500px;
 }
 .loginForm h1 {
-    font-size: max(1.5rem,3vw);
+  font-size: max(1.5rem, 3vw);
 }
-.loginForm input{
-    border-radius: 25px;
-    border-color: hsl(0, 98%, 70%);
-    background: none;
-    width: 90%;
-    height: 4.5vh;
-    padding: 1vh;
-    margin: .5vh;
+.loginForm input {
+  border-radius: 25px;
+  border-color: hsl(0, 98%, 70%);
+  background: none;
+  width: 90%;
+  height: 4.5vh;
+  padding: 1vh;
+  margin: 0.5vh;
 }
 
 .loginForm a {
-    
 }
 .loginForm input:hover {
-    border-color: hsl(0, 98%, 50%);
-    border-width: 3px;
-    
+  border-color: hsl(0, 98%, 50%);
+  border-width: 3px;
 }
 .not-registered {
-    margin-top: 1vh;
+  margin-top: 1vh;
 }
 
 .already-registered {
-    margin-top: 1vh;
+  margin-top: 1vh;
 }
 
 input::placeholder {
-    color: black;
-    font-weight:900;
-    opacity: 1;
-  }
+  color: black;
+  font-weight: 900;
+  opacity: 1;
+}
 
 .btn--submit {
-    width: 90%;
+  width: 90%;
 }
 
 .btn--cancel {
-    width: 90%;
+  width: 90%;
 }
 
-
 h3.errorMessage {
-    color: red
+  color: red;
 }

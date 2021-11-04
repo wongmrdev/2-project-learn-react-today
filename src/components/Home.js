@@ -35,7 +35,7 @@ function Home() {
         console.log(recipes)
       }
     })
-    .catch(err => {})
+    .catch(err => {console.log(err)})
     }
 
   useEffect( ()=> {

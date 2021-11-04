@@ -1,20 +1,23 @@
 This project was an educational project by web-dev-simplified called [learn-react-today](https://github.com/WebDevSimplified/Learn-React-Today)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project requires 2 additional components : [E-mail Routing Server](https://github.com/ironmanCCT/nodemailer)+[E-mail account](gmail.com), [Backend Server in Node.js](https://github.com/ironmanCCT/family-recipe-app-recipe-server) + [MongoDB database](https://cloud.mongodb.com)
 
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm run dev`
+
 running 'concurrently' command in package.json starts 4 scripts:
 
-    "dev": "concurrently \"npm run devStartRecipeServer\" \"npm run start\" \"npm run devStartAuth\" \"npm run devStartLogin\"" 
+    "dev": "concurrently \"npm run devStartRecipeServer\" \"npm run start\" \"npm run devStartAuth\" \"npm run devStartLogin\""
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3007](http://localhost:3007) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
