@@ -5,7 +5,7 @@ import { RecipeContext } from './App'
 import ModalDeleteConfirmation from './ModalDeleteConfirmation'
 
 export default function Recipe(props) {
-  const {handleRecipeSelect} = useContext(RecipeContext)
+  const { handleRecipeSelect } = useContext(RecipeContext)
   const {
     id,
     name,
@@ -22,37 +22,36 @@ export default function Recipe(props) {
   const [isConfirming, setIsConfirming] = useState(false)
   const [isActive, toggleActiveClass] = useState(false)
   const activeClass = isActive ? 'active' : ''
-  
-  function handleToggleActiveClass(e){
-      if (e.target.className.includes('btn', 'recipe__label', 'recipe__value')) return
-    
+
+  function handleToggleActiveClass(e) {
+    if (e.target.className.includes('btn', 'recipe__label', 'recipe__value')) return
+
     isActive ? toggleActiveClass(false) : toggleActiveClass(true)
   }
-  
-  if(authors[0]) console.log(authors[0].name)
-  
+
+
   return (
     <>
       {/* JSX IF STATEMENT */}
-      <ModalDeleteConfirmation confirming={isConfirming} name={name} id={id} onClose={()=>setIsConfirming(false)}/>
+      <ModalDeleteConfirmation confirming={isConfirming} name={name} id={id} onClose={() => setIsConfirming(false)} />
 
       <div className="recipe">
-        <div className={"recipe__header collapsible " + activeClass} onClick={(e)=>handleToggleActiveClass(e)}>
+        <div className={"recipe__header collapsible " + activeClass} onClick={(e) => handleToggleActiveClass(e)}>
           <h3 className="recipe__title ">{name}</h3>
           <p className="first-author">{authors[0] ? authors[0].name : "anon"}</p>
           <div className="recipe__header__button-container">
-            <button 
-            className="btn btn--primary mr-1 pulse-button-hover"
-            onClick={(e)=> handleRecipeSelect(e, id)}>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <button
+              className="btn btn--primary mr-1 pulse-button-hover"
+              onClick={(e) => handleRecipeSelect(e, id)}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
               Edit
             </button>
-            <button 
+            <button
               className="btn btn--danger pulse-button-hover"
-              onClick={()=>setIsConfirming(true)}>
+              onClick={() => setIsConfirming(true)}>
               <span></span>
               <span></span>
               <span></span>
@@ -61,7 +60,7 @@ export default function Recipe(props) {
             </button>
           </div>
         </div>
-        <div className={"content " + activeClass} onClick={(e)=>handleToggleActiveClass(e)}>
+        <div className={"content " + activeClass} onClick={(e) => handleToggleActiveClass(e)}>
           <div className="recipe__row">
             <span className="recipe__label">Cook Time:</span>
             <span className="recipe__value">{cookTime}</span>
