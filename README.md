@@ -10,9 +10,9 @@ This project requires 2 additional components : [E-mail Routing Server](https://
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/20716672/140497755-ce00412c-4a61-4736-a10d-852be78587b7.png){width: 85%}
+<img src ="https://user-images.githubusercontent.com/20716672/140497755-ce00412c-4a61-4736-a10d-852be78587b7.png" width: 85%>
 
-![image](https://user-images.githubusercontent.com/20716672/140497572-461576f6-7d05-4b31-bfc4-67c8eea01b25.png){width: 85%}
+<img src ="https://user-images.githubusercontent.com/20716672/140497572-461576f6-7d05-4b31-bfc4-67c8eea01b25.png" width: 85%>
 
 ## Requirements
 
