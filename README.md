@@ -1,16 +1,18 @@
 # Family Recipes App
 
-##Background
+## Background
+
 This project was an educational project by web-dev-simplified called [learn-react-today](https://github.com/WebDevSimplified/Learn-React-Today). It was extended by Matt Wong
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 This project requires 2 additional components : [E-mail Routing Server](https://github.com/ironmanCCT/nodemailer)+[E-mail account](gmail.com), [Backend Server in Node.js](https://github.com/ironmanCCT/family-recipe-app-recipe-server) + [MongoDB database](https://cloud.mongodb.com)
 
-##Screenshots
-![image](https://user-images.githubusercontent.com/20716672/140497755-ce00412c-4a61-4736-a10d-852be78587b7.png)
+## Screenshots
 
-![image](https://user-images.githubusercontent.com/20716672/140497572-461576f6-7d05-4b31-bfc4-67c8eea01b25.png)
+![image](https://user-images.githubusercontent.com/20716672/140497755-ce00412c-4a61-4736-a10d-852be78587b7.png){width: 85%}
+
+![image](https://user-images.githubusercontent.com/20716672/140497572-461576f6-7d05-4b31-bfc4-67c8eea01b25.png){width: 85%}
 
 ## Requirements
 
