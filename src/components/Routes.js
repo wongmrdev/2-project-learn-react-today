@@ -11,16 +11,16 @@ class Routes extends React.Component {
   render() {
     return (
       <Router>
-        <Route path="/" component={Header}/>
+        <Route path="/" component={Header} />
         <Switch>
-          <Route  exact path="/" 
-                  render= {()=>  {
-                    return (localStorage.getItem("isLoggedIn") ?  <Redirect to="/home" /> : <Redirect to="/login" />)
-                  }}/>
-          <PrivateRoute exact path="/home" component={Home}/>
-          <Route exact path="/login" component={Login}/>
-          <Route exact path="/registration" component={Registration}/>
-          <Route exact path="/verify-email" component={VerifyEmail}/>
+          <Route exact path="/"
+            render={() => {
+              return ((localStorage.getItem("isLoggedIn") === "true") ? <Redirect to="/home" /> : <Redirect to="/login" />)
+            }} />
+          <PrivateRoute exact path="/home" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/registration" component={Registration} />
+          <Route exact path="/verify-email" component={VerifyEmail} />
         </Switch>
       </Router>
     );

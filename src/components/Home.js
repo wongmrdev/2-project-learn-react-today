@@ -16,34 +16,36 @@ function Home() {
     setRecipes,
   } = useContext(RecipeContext)
 
-  async function handleGetRecipes() {
-    console.log(backendUrl)
-    fetch(backendUrl + '/recipes', {
-      credentials: "include",
-    })
-      .then(res => {
-        console.log('res: ', res)
-        return res.json()
-      })
-      .then(receivedRecipes => {
-        if (receivedRecipes.success === false || receivedRecipes.success === null || typeof receivedRecipes.success === undefined) {
-          return setIsAuthenticated(false)
-        }
-        console.log('Received Recipes:', receivedRecipes)
 
-        if (receivedRecipes.success === true) {
-          setRecipes(receivedRecipes.recipes)
-        }
-      })
-      .catch(err => { console.log(err) })
-  }
 
   useEffect(() => {
+    async function handleGetRecipes() {
+      console.log(backendUrl)
+      fetch(backendUrl + '/recipes', {
+        credentials: "include",
+      })
+        .then(res => {
+          console.log('res: ', res)
+          return res.json()
+        })
+        .then(receivedRecipes => {
+          if (receivedRecipes.success === false || receivedRecipes.success === null || typeof receivedRecipes.success === undefined) {
+            return setIsAuthenticated(false)
+          }
+          console.log('Received Recipes:', receivedRecipes)
+
+          if (receivedRecipes.success === true) {
+            setRecipes(receivedRecipes.recipes)
+          }
+        })
+        .catch(err => { console.log(err) })
+    }
+
     if (isAuthenticated) {
       handleGetRecipes();
     }
   }
-    , [isAuthenticated])
+    , [isAuthenticated, setIsAuthenticated, setRecipes])
 
 
 

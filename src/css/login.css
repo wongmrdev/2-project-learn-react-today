@@ -51,3 +51,7 @@ input::placeholder {
 h3.errorMessage {
   color: red;
 }
+
+button:disabled {
+  font-size: 2pxs;
+}

@@ -1,108 +1,110 @@
 .delete-dialogue-box {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    background-color: rgba(0, 0, 0, 0.664);;
-    z-index: 999;
-    padding-top: 25vh;
-    padding-right: 10vw;
-    padding-left: 10vw;
-    font-size: 16px;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.664);
+  z-index: 999;
+  padding-top: 25vh;
+  padding-right: 10vw;
+  padding-left: 10vw;
+  font-size: 16px;
+}
 
-    }
+.modal-grid-container {
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "notice notice"
+    "button-1 button-1"
+    "button-2 button-2";
+  gap: 5px;
+  row-gap: 5%;
+  align-content: space-evenly;
+  background-color: #f5e7e7;
+  padding: 5vh 2vh 5vh 2vh;
+  text-align: center;
+  z-index: 1000;
+}
 
-    .modal-grid-container {
-        display: grid;
-        grid-template-areas: 
-        'title title'
-        'notice notice' 
-        'button-1 button-1'
-        'button-2 button-2'
-        ;
-        gap: 5px;
-        row-gap: 5%;
-        align-content: space-evenly;
-        background-color: #f5e7e7;
-        padding: 5vh 2vh 7vh 2vh;
-        text-align: center;
-        z-index: 1000;
-    }
-
-    .delete-dialogue-box button:hover {
-        opacity:1 !important;
-    }
-    .delete-dialogue-box__title {
-        color: rgb(46, 46, 46);
-        justify-content: center;
-        grid-area: title;
-        font-size: 1rem;
-        font-weight: 700;
-    }
-    .delete-dialogue-box__notice {
-        grid-area: notice;
-    }
-    #confirm-delete {
-        opacity: .6;
-        grid-area: button-2;
-    }
-    #cancel-delete {
-        opacity: .6;
-        grid-area: button-1;
-    }
+.delete-dialogue-box button:hover {
+  opacity: 1 !important;
+}
+.delete-dialogue-box__title {
+  color: rgb(46, 46, 46);
+  justify-content: center;
+  grid-area: title;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.delete-dialogue-box__notice {
+  grid-area: notice;
+}
+#confirm-delete {
+  height: 3vh;
+  opacity: 0.6;
+  grid-area: button-2;
+}
+#cancel-delete {
+  height: 3vh;
+  opacity: 0.6;
+  grid-area: button-1;
+}
 @media only screen and (min-width: 900px) {
-    .delete-dialogue-box {
+  .delete-dialogue-box {
     position: fixed;
     top: 0px;
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color: rgba(0, 0, 0, 0.664);;
+    background-color: rgba(0, 0, 0, 0.664);
     z-index: 999;
     padding-top: 25vh;
     padding-right: 10vw;
     padding-left: 10vw;
-    
+
     font-size: 1.25rem;
+  }
 
-    }
+  .modal-grid-container {
+    display: grid;
+    grid-template-areas:
+      "title title"
+      "notice notice"
+      "button-1 button-2"
+      "button-1 button-2"
+      "button-1 button-2";
+    gap: 5px;
+    row-gap: 20%;
+    align-content: space-evenly;
+    background-color: #f5e7e7;
+    padding: 7vh 10vh 7vh 10vh;
+    text-align: center;
+    z-index: 1000;
+  }
 
-    .modal-grid-container {
-        display: grid;
-        grid-template-areas: 
-        'title title'
-        'notice notice' 
-        'button-1 button-2'
-        'button-1 button-2';
-        gap: 5px;
-        row-gap: 20%;
-        align-content: space-evenly;
-        background-color: #f5e7e7;
-        padding: 5vh 10vh 15vh 5vh;
-        text-align: center;
-        z-index: 1000;
-    }
-
-    .delete-dialogue-box button:hover {
-        opacity:1 !important;
-    }
-    .delete-dialogue-box__title {
-        color: rgb(46, 46, 46);
-        justify-content: center;
-        grid-area: title;
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
-    .delete-dialogue-box__notice {
-        grid-area: notice;
-    }
-    #confirm-delete {
-        opacity: .6;
-        grid-area: button-2;
-    }
-    #cancel-delete {
-        opacity: .6;
-        grid-area: button-1;
-    }
+  .delete-dialogue-box button:hover {
+    opacity: 1 !important;
+  }
+  .delete-dialogue-box__title {
+    color: rgb(46, 46, 46);
+    justify-content: center;
+    grid-area: title;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .delete-dialogue-box__notice {
+    grid-area: notice;
+  }
+  #confirm-delete {
+    height: 4vw;
+    opacity: 0.6;
+    grid-area: button-2;
+  }
+  #cancel-delete {
+    height: 4vw;
+    opacity: 0.6;
+    grid-area: button-1;
+  }
 }
