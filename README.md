@@ -1,8 +1,12 @@
 # Family Recipes App
 
+[Open the public URL](https://famrep.herokuapp.com)
+
+- Chrome recommended. Safari Users, you must unblock third party cookies to enable login. The auth server is on a separate, but secure, domain.
+
 ## Background
 
-This project was an educational project by web-dev-simplified called [learn-react-today](https://github.com/WebDevSimplified/Learn-React-Today). It was extended by Matt Wong
+This project was an extension of the original project by web-dev-simplified called [learn-react-today](https://github.com/WebDevSimplified/Learn-React-Today).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
