@@ -1,6 +1,6 @@
 # Family Recipes App
 
-[Open the public URL](https://famrep.herokuapp.com)
+[Navigate to the public URL here](https://famrep.herokuapp.com)
 
 - Chrome recommended. Safari Users, you must unblock third party cookies to enable login. The auth server is on a separate, but secure, domain.
 
